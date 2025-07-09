@@ -1,0 +1,7 @@
+[]	backflip (when click with cursor)
+[]	cat drag (if cursor drag)
+
+[]	woooo (when flying)
+[] 	eyes and face sparkle (if alak dragging)
+[+]	intro face
+[]	walking (when idle anim)
