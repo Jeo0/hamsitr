@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="hamsitr"
+run/main_scene="uid://binhhxag3e67n"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg")
 
 [rendering]
 
