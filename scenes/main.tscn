@@ -1,6 +1,6 @@
 [gd_scene load_steps=39 format=3 uid="uid://binhhxag3e67n"]
 
-[ext_resource type="Script" uid="uid://bwb5vy5qwblwx" path="res://scripts/hamzter.gd" id="1_2wyq8"]
+[ext_resource type="Script" uid="uid://bwb5vy5qwblwx" path="res://scripts/player/hamzter.gd" id="1_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://k5grlw2g8acu" path="res://assets/cat_animations/intro_idle/intro_idle.png" id="2_2f3dj"]
 [ext_resource type="Texture2D" uid="uid://b5ijccnyphfkj" path="res://assets/cat_animations/intro_greetings/intro_greetings0000.png" id="2_vxglm"]
 [ext_resource type="Texture2D" uid="uid://t04muc4thr73" path="res://assets/cat_animations/intro_greetings/intro_greetings0001.png" id="3_2f3dj"]
