@@ -64,9 +64,13 @@ func _physics_process(delta: float) -> void:
 			g_currentStateMachine = g_stateMachine.ROLLING
 			_play_animation(null)
 			
+		
+		print("g_Rolling remaining: " + str(g_rolling_remaining))
+		"""
 		if g_rolling_remaining == 0:
 			g_currentStateMachine = g_stateMachine.IDLING;
 			_play_animation(null)
+		"""
 			
 	move_and_slide()
 	
@@ -92,6 +96,8 @@ func _play_animation(m_arg):
 			collision_rolling.hide()
 			collision_idle.hide()
 			"""
+			collision_rolling.disabled = true
+			collision_idle.disabled = true
 			
 			
 		g_stateMachine.ROLLING:
@@ -106,6 +112,8 @@ func _play_animation(m_arg):
 				collision_greetings.hide()
 				collision_rolling.show()
 				"""
+				collision_greetings.disabled = true
+				collision_rolling.disabled = false
 				
 				
 		g_stateMachine.IDLING:
@@ -120,6 +128,8 @@ func _play_animation(m_arg):
 			collision_rolling.hide()
 			collision_idle.show()
 			"""
+			collision_rolling.disabled = true 
+			collision_idle.disabled = false
 
 
 func _on_animation_sprite_animation_finished() -> void:
@@ -134,8 +144,8 @@ func _on_animation_sprite_animation_looped() -> void:
 
 func _on_animation_sprite_frame_changed() -> void:
 	# print("==========sprite frame change")
-	print("g_Rolling remaining: " + str(g_rolling_remaining))
 	# print("current statemachine: " + str(g_stateMachine.get()))
+	
 	# RULE: "pass" if the logic is handled elsewhere
 	# only change the g_currentStateMachine here
 	# if you need to loop
@@ -145,11 +155,12 @@ func _on_animation_sprite_frame_changed() -> void:
 				
 		g_stateMachine.ROLLING:
 			print("im being played")
-			if not g_rolling_remaining:
+			if g_rolling_remaining:
 				g_rolling_remaining -= 1
 			else:
-				g_rolling_remaining = default_rolling_remaining
+				g_rolling_remaining = default_rolling_remaining # reset
 				g_currentStateMachine = g_stateMachine.IDLING
 				
 		g_stateMachine.IDLING:
+			# print("status: idle")
 			pass
