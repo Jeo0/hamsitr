@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://binhhxag3e67n"]
+[gd_scene load_steps=51 format=3 uid="uid://binhhxag3e67n"]
 
 [ext_resource type="Script" uid="uid://bwb5vy5qwblwx" path="res://scripts/player/hamzter.gd" id="1_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://k5grlw2g8acu" path="res://assets/cat_animations/intro_idle/intro_idle.png" id="2_2f3dj"]
@@ -27,12 +27,24 @@
 [ext_resource type="Texture2D" uid="uid://b658idiav5kl3" path="res://assets/cat_animations/intro_greetings/intro_greetings0022.png" id="24_ty1g6"]
 [ext_resource type="Texture2D" uid="uid://dmd1fdetucqmb" path="res://assets/cat_animations/intro_greetings/intro_greetings0023.png" id="25_j2jfr"]
 [ext_resource type="Texture2D" uid="uid://brnm142nklyjh" path="res://assets/cat_animations/intro_greetings/intro_greetings0024.png" id="26_bjg73"]
-[ext_resource type="Texture2D" uid="uid://5wuyadqm6quj" path="res://assets/cat_animations/intro_rolling/intro_rolling0000.png" id="28_5q0nq"]
-[ext_resource type="Texture2D" uid="uid://bl6386k4dxevb" path="res://assets/cat_animations/intro_rolling/intro_rolling0001.png" id="29_dgi5k"]
-[ext_resource type="Texture2D" uid="uid://b55hhdux3ygjc" path="res://assets/cat_animations/intro_rolling/intro_rolling0002.png" id="30_j8jky"]
-[ext_resource type="Texture2D" uid="uid://cjl4bgqbtof0d" path="res://assets/cat_animations/intro_rolling/intro_rolling0003.png" id="31_kmb1v"]
-[ext_resource type="Texture2D" uid="uid://bujml684sqs5j" path="res://assets/cat_animations/intro_rolling/intro_rolling0004.png" id="32_fuf3a"]
-[ext_resource type="Texture2D" uid="uid://b0lekkq3dogyi" path="res://assets/cat_animations/intro_rolling/intro_rolling0005.png" id="33_pibwh"]
+[ext_resource type="Texture2D" uid="uid://cvlrkr01224wm" path="res://assets/cat_animations/intro_rolling/intro_rolling_sprite0027.png" id="28_vchkt"]
+[ext_resource type="Texture2D" uid="uid://dh31gmtjdkw8h" path="res://assets/cat_animations/intro_rolling/intro_rolling_sprite0028.png" id="29_txyw0"]
+[ext_resource type="Texture2D" uid="uid://wey7s766r8w" path="res://assets/cat_animations/intro_rolling/intro_rolling_sprite0029.png" id="30_vc5cj"]
+[ext_resource type="Texture2D" uid="uid://dk7gl5gu5upub" path="res://assets/cat_animations/intro_rolling/intro_rolling_sprite0030.png" id="31_nvyfr"]
+[ext_resource type="Texture2D" uid="uid://dbxl0s0e8mpe4" path="res://assets/cat_animations/intro_rolling/intro_rolling_sprite0031.png" id="32_ty1g6"]
+[ext_resource type="Texture2D" uid="uid://dd4udf6jxxj4x" path="res://assets/cat_animations/intro_rolling/intro_rolling_sprite0032.png" id="33_j2jfr"]
+[ext_resource type="Texture2D" uid="uid://b1vuxl08m435h" path="res://assets/cat_animations/intro_rolling/intro_rolling_sprite0033.png" id="34_bjg73"]
+[ext_resource type="Texture2D" uid="uid://dm8shw1pakflg" path="res://assets/cat_animations/intro_rolling/intro_rolling_sprite0034.png" id="35_bu4jf"]
+[ext_resource type="Texture2D" uid="uid://csjy7dtb6d3yt" path="res://assets/cat_animations/intro_rolling/intro_rolling_sprite0035.png" id="36_o7ddy"]
+[ext_resource type="Texture2D" uid="uid://wa8lamd8egi7" path="res://assets/cat_animations/intro_rolling/intro_rolling_sprite0036.png" id="37_0loja"]
+[ext_resource type="Texture2D" uid="uid://blvoyu15umcls" path="res://assets/cat_animations/intro_rolling/intro_rolling_sprite0037.png" id="38_ids8r"]
+[ext_resource type="Texture2D" uid="uid://df3yl8y1lt86a" path="res://assets/cat_animations/intro_rolling/intro_rolling_sprite0038.png" id="39_dnhof"]
+[ext_resource type="Texture2D" uid="uid://c0v2qvhvyqpx3" path="res://assets/cat_animations/intro_rolling/intro_rolling_sprite0039.png" id="40_1v6qk"]
+[ext_resource type="Texture2D" uid="uid://dvdto22bu2pe5" path="res://assets/cat_animations/intro_rolling/intro_rolling_sprite0040.png" id="41_augu2"]
+[ext_resource type="Texture2D" uid="uid://ck6riex4vxu78" path="res://assets/cat_animations/intro_rolling/intro_rolling_sprite0041.png" id="42_tm6hj"]
+[ext_resource type="Texture2D" uid="uid://c564qtrlphtdw" path="res://assets/cat_animations/intro_rolling/intro_rolling_sprite0042.png" id="43_kf5aa"]
+[ext_resource type="Texture2D" uid="uid://cfcbbute58fiq" path="res://assets/cat_animations/intro_rolling/intro_rolling_sprite0043.png" id="44_t5ykj"]
+[ext_resource type="Texture2D" uid="uid://cyi1xlreedtgi" path="res://assets/cat_animations/intro_rolling/intro_rolling_sprite0044.png" id="45_e755i"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bu4jf"]
 animations = [{
@@ -126,22 +138,58 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("28_5q0nq")
+"texture": ExtResource("28_vchkt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("29_dgi5k")
+"texture": ExtResource("29_txyw0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("30_j8jky")
+"texture": ExtResource("30_vc5cj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("31_kmb1v")
+"texture": ExtResource("31_nvyfr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("32_fuf3a")
+"texture": ExtResource("32_ty1g6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("33_pibwh")
+"texture": ExtResource("33_j2jfr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_bjg73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_bu4jf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_o7ddy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_0loja")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_ids8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_dnhof")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_1v6qk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_augu2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_tm6hj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_kf5aa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_t5ykj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_e755i")
 }],
 "loop": true,
 "name": &"intro_rolling",
@@ -167,7 +215,7 @@ script = ExtResource("1_2wyq8")
 [node name="animationSprite" type="AnimatedSprite2D" parent="Hamzter"]
 scale = Vector2(0.846637, 0.846637)
 sprite_frames = SubResource("SpriteFrames_bu4jf")
-animation = &"intro_rolling"
+animation = &"idling"
 autoplay = "intro_greetings1"
 
 [node name="collision_greetings" type="CollisionShape2D" parent="Hamzter"]
@@ -176,7 +224,7 @@ scale = Vector2(0.932555, 0.932555)
 shape = SubResource("RectangleShape2D_2wyq8")
 
 [node name="collision_rolling" type="CollisionShape2D" parent="Hamzter"]
-position = Vector2(25.641, 117.949)
+position = Vector2(25.641, 71.7949)
 scale = Vector2(24.885, 20.8021)
 shape = SubResource("CircleShape2D_c6pm6")
 
