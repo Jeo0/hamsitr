@@ -35,6 +35,7 @@ func update(delta: float) -> void:
 	# setting the e_bool_azy_animation_finished to FALSE
 	# will play the animation at the start of the frame
 	if e_bool_azy_animation_finished == false:
+		player.azy_animation_sprite.scale *= 1.45
 		player.azy_animation_sprite.show()
 		
 		# play random
@@ -51,6 +52,7 @@ func update(delta: float) -> void:
 		player.azy_animation_sprite.hide()
 		player.azy_animation_sprite.stop()
 		e_azyanimation_decision = randf()
+		player.azy_animation_sprite.scale = 1
 		
 		# proceed to the other branch 
 		# show the animation
