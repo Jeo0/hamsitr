@@ -1,8 +1,5 @@
-CollisionShape2D
-StaticBody2D
-CharacterBody2D
-ScrollContainer
-Area2D
-Node2D
-CollisionPolygon2D
+GPUParticles2D
 AnimatedSprite2D
+AnimationPlayer
+Timer
+Sprite2D

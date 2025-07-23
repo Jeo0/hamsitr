@@ -1,7 +1,23 @@
-[]	backflip (when click with cursor)
+[+]	backflip (when click with cursor)
 []	cat drag (if cursor drag)
 
 []	woooo (when flying)
 [] 	eyes and face sparkle (if alak dragging)
 [+]	intro face
-[]	walking (when idle anim)
+
+[]  idle:
+  []  transition to walk
+    []	walking 
+  []  transition to idle
+
+[]  idle:
+  []  pet belly
+    []  message:
+
+asset tagging for inventory disposal:
+  - something about putting it in a buffer or disposal
+  - hdd and ssd putting tag and 
+  - redoing the tagging after we mistook the hdds to be ssds
+  - using excel sheet for records (serial number, asse)
+  - and keyboard
+

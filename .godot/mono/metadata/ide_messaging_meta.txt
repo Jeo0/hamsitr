@@ -1,0 +1,2 @@
+﻿62962
+C:/Users/admin/Documents/programs/godot_cs/Godot_v4.4.1-stable_mono_win64/godot_4.4.1-stable_mono_win64.exe
