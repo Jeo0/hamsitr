@@ -3,14 +3,23 @@ extends PlayerState
 
 func enter():
 	player.animation_sprite.play("intro_greetings1")
+	player.coll_area_greetings.monitoring = true 
+	player.coll_area_greetings.input_pickable = true
+	
 	player.collision_greetings.disabled = false
 	player.collision_rolling.disabled = true
 	player.collision_idle.disabled = true
 	player.collision_walking.disabled = true
 	player.collision_petting.disabled = true
+	player.collision_grabbing.disabled = true
 	
 	player.azy_animation_sprite.hide()
-
+	
+	
+func exit() -> void:
+	player.coll_area_greetings.monitoring = true 
+	player.coll_area_greetings.input_pickable = true
+	
 
 func on_animation_finished():
 	# Optional: Go idle after greeting ends
@@ -20,7 +29,28 @@ func physics_update(delta: float) -> void:
 	pass
 	
 func update(delta: float) -> void:
-	_setup_bitmask()
+	pass
+	
+func handle_input(event: InputEvent) -> void:
+	pass
+	if event.is_action_pressed("click"):
+		pass
+		
+		
+func on_collision_area_input_event(viewport, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		print("Greeting area clicked.")
+		player._change_state(load("res://scripts/player/states/rollingState.gd").new())
+"""
+	
+var current_frame := -1
+var current_animation := ""
+func update(delta: float) -> void:
+	var anim_sprite = player.animation_sprite
+	if anim_sprite.frame != current_frame or anim_sprite.animation != current_animation:
+		_setup_bitmask()
+		current_frame = anim_sprite.frame
+		current_animation = anim_sprite.animation
 
 
 ####################################################################
@@ -44,11 +74,20 @@ func is_click_on_visible_pixel(global_pos: Vector2) -> bool:
 		return false
 
 	return bitmask.get_bitv(image_pos)
+	
+	
+	
+
+@onready var rigid_body_2d: RigidBody2D = $Mouse/RigidBody2D
 
 func handle_input(event):
+	pass
 	if event.is_action_pressed("click"):
 		# if player.is_pixel_opaque(player.get_local_mouse_position()):
 		if is_click_on_visible_pixel(player.get_global_mouse_position()):
 			print("\n=======\nCat1 clicked, changing state to rolling \n=======");
 			
 			player._change_state(load("res://scripts/player/states/rollingState.gd").new())
+
+
+"""

@@ -46,7 +46,7 @@ func update(delta) -> void:
 		+ "\t\tvelocity: " + str(player.velocity.length()).pad_decimals(3)
 		+ "\t\tani_speed: " + str(player.animation_sprite.speed_scale).pad_decimals(3))
 	"""
-const e_collision_offset: float = 100;
+const e_collision_offset: float = 400;
 const e_max_error_allowable: float = 100;
 var e_place_going: Vector2
 var e_direction_going: Vector2
@@ -54,12 +54,13 @@ var e_is_walking: bool = false
 const e_walking_speed: float = 100
 
 func _determine_where_to_go_next() -> void:
-	"""
-	var m_place_to_go_next: Vector2 = Vector2(randf_range(0 + e_collision_offset, player.get_viewport_rect().size.x - e_collision_offset),
+	var m_place_to_go_next: Vector2 = Vector2(randf_range(0 + e_collision_offset,
+			player.get_viewport_rect().size.x - e_collision_offset),
 			randf_range(0+e_collision_offset, player.get_viewport().size.y - e_collision_offset) )
 	"""
 	var m_place_to_go_next: Vector2 = Vector2(randf_range(0, player.get_viewport_rect().size.x),
 											randf_range(0, player.get_viewport().size.y) )
+	"""
 	e_place_going = m_place_to_go_next
 	e_direction_going = Vector2(e_place_going - player.get_transform().origin).normalized()
 	

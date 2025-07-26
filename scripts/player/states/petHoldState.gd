@@ -55,7 +55,7 @@ func _determine_what_state() -> GOTO_STATES:
 	
 	# if blinking & timer run out: return GO_HOLD
 	if e_current_local_state == GOTO_STATES.GO_BLINK and player.local_timer.time_left <= 0.001:
-		print("GOING TOHOLD====================================================")
+		# print("GOING TOHOLD====================================================")
 		return GOTO_STATES.GO_HOLD
 
 	# If holding and timer ran out, maybe go to blink
@@ -116,13 +116,15 @@ func handle_input(event):
 	if event.is_action_released("click"):
 		e_current_local_state = GOTO_STATES.GO_NOHOLD
 		player._change_state(load("res://scripts/player/states/petNoHoldAwaitPetState.gd").new())
-		print("released click")
+		# print("released click")
 	
 	
 	# record the destruction history
 	# (movement delta) accumulate
+	"""
 	print("mousevelo: " + str(Input.get_last_mouse_velocity().length()).pad_decimals(3)
 		+ "\tmousescreen: " + str(Input.get_last_mouse_screen_velocity().length()).pad_decimals(3))
+	"""
 		
 	# lets do it quick and dirty
 	if Input.get_last_mouse_velocity().length() >= player.g_tickle_threshold: 

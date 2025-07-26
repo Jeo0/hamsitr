@@ -12,20 +12,30 @@ config_version=5
 
 config/name="hamsitr"
 run/main_scene="res://scenes/main.tscn"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/show_image=false
 config/icon="res://assets/cat_animations/intro_idle/intro_idle.png"
 
+[autoload]
+
+InputManager="*res://scripts/Managers/InputManager.cs"
+WindowManager="*res://scripts/Managers/WindowManager.cs"
+ApiManager="*res://scripts/Clickthrough/ApiManager.cs"
+MouseDetection="*res://scripts/Clickthrough/MouseDetection.cs"
+
 [display]
 
-window/size/mode=3
+window/size/mode=2
 window/size/borderless=true
 window/size/always_on_top=true
 window/size/transparent=true
+window/size/extend_to_title=true
 window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 window/per_pixel_transparency/allowed=true
+window/vsync/vsync_mode=0
 
 [dotnet]
 
@@ -59,7 +69,4 @@ textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 viewport/hdr_2d=true
-anti_aliasing/quality/msaa_2d=3
 viewport/transparent_background=true
-anti_aliasing/quality/screen_space_aa=1
-anti_aliasing/quality/use_taa=true

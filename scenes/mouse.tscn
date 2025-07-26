@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1w4mk8n1l3k6"]
+
+[ext_resource type="Script" uid="uid://yunuf5buom6y" path="res://scenes/mouse.gd" id="1_iog6k"]
+[ext_resource type="Texture2D" uid="uid://7nhewguyqq6d" path="res://assets/mouse/grab.png" id="1_xa71f"]
+[ext_resource type="Texture2D" uid="uid://c7cemwcapakwi" path="res://assets/mouse/normal.png" id="2_iog6k"]
+[ext_resource type="Texture2D" uid="uid://nvbiyyh68f7q" path="res://assets/mouse/petting.png" id="3_dexx5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vtx2l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xa71f")
+}],
+"loop": true,
+"name": &"grab",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_iog6k")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dexx5")
+}],
+"loop": true,
+"name": &"petting",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_11yus"]
+
+[node name="Mouse" type="Node"]
+script = ExtResource("1_iog6k")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="mouse_sprite" type="AnimatedSprite2D" parent="RigidBody2D"]
+position = Vector2(21, 4)
+sprite_frames = SubResource("SpriteFrames_vtx2l")
+animation = &"normal"
+autoplay = "normal"
+
+[node name="collision_mouse" type="CollisionShape2D" parent="RigidBody2D"]
+scale = Vector2(30.8444, 34.0647)
+shape = SubResource("CircleShape2D_11yus")

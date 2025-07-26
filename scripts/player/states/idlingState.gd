@@ -87,7 +87,7 @@ func _determine_what_state() -> GOTO_STATES:
 
 
 ################################################################
-################################################################
+################################################################ 
 ################################################################
 var bitmask: BitMap
 func _setup_bitmask():
@@ -111,6 +111,12 @@ func is_click_on_visible_pixel(global_pos: Vector2) -> bool:
 func handle_input(event):
 	if event.is_action_pressed("click"):
 		if is_click_on_visible_pixel(player.get_global_mouse_position()):
+			pass
 			print("\n=======\nCat1 clicked, changing state to pethold \n=======");
 			
 			player._change_state(load("res://scripts/player/states/petHoldState.gd").new())
+
+	if event.is_action_pressed("rclick"):
+		if is_click_on_visible_pixel(player.get_global_mouse_position()):
+			player._change_state(load("res://scripts/player/states/grabbingState.gd").new())
+		

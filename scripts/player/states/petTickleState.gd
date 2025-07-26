@@ -21,6 +21,8 @@ var e_bool_azy_animation_finished: bool = true # see NOTE_ID: azymessage1
 var e_azy_timer: float = randf_range(e_min_azy_start_time, e_max_azy_start_time)
 var e_azyanimation_decision: float = randf()
 
+var e_orig_scale: Vector2 = Vector2(0.195, 0.195)
+
 enum GOTO_STATES{
 	GOTO_DECAY,
 	GOTO_GIGGLE
@@ -35,7 +37,7 @@ func update(delta: float) -> void:
 	# setting the e_bool_azy_animation_finished to FALSE
 	# will play the animation at the start of the frame
 	if e_bool_azy_animation_finished == false:
-		player.azy_animation_sprite.scale *= 1.45
+		# player.scale *= 1.00001 # not working properly
 		player.azy_animation_sprite.show()
 		
 		# play random
@@ -52,7 +54,8 @@ func update(delta: float) -> void:
 		player.azy_animation_sprite.hide()
 		player.azy_animation_sprite.stop()
 		e_azyanimation_decision = randf()
-		player.azy_animation_sprite.scale = 1
+		
+		# player.scale = e_orig_scale # not working properly
 		
 		# proceed to the other branch 
 		# show the animation
@@ -81,12 +84,13 @@ func update(delta: float) -> void:
 			# set here to invoke the single run for starting the timer
 			player.local_timer.stop()
 			
+			"""
 			print("accum: " + str(player.g_tickle_accumulation).pad_decimals(3)
 					+ "\t\ttimeleft: " + str(player.local_timer.time_left).pad_decimals(3)
 					+ "\t\tcurrent accum: " + str(Input.get_last_mouse_velocity().length()).pad_decimals(3)
 					+ "\t\tazytimer: " + str(e_azy_timer).pad_decimals(3)
 					+ "\t\tstate: giggle")
-			
+			"""
 			
 		GOTO_STATES.GOTO_DECAY:
 			
@@ -98,11 +102,13 @@ func update(delta: float) -> void:
 			if player.g_tickle_accumulation <= 1.0:
 				player._change_state(load("res://scripts/player/states/petHoldState.gd").new())
 				
+			"""
 			print("accum: " + str(player.g_tickle_accumulation).pad_decimals(3)
 					+ "\t\ttimeleft: " + str(player.local_timer.time_left).pad_decimals(3)
 					+ "\t\tcurrent accum: " + str(Input.get_last_mouse_velocity().length()).pad_decimals(3)
 					+ "\t\tazytimer: " + str(e_azy_timer).pad_decimals(3)
 					+ "\t\tstate: decay")
+			"""
 
 
 	
@@ -127,7 +133,7 @@ func on_azy_animation_sprite_animation_finished() -> void:
 	
 func on_azy_animation_sprite_animation_looped(): 
 	e_bool_azy_animation_finished = true
-	print("\n\n=================done====================")
+	# print("\n\n=================done====================")
 	player.azy_animation_sprite.hide()
 	player.azy_animation_sprite.stop()
 	

@@ -92,7 +92,7 @@ func handle_input(event):
 	if event.is_action_pressed("click"):
 		# if player.is_pixel_opaque(player.get_local_mouse_position()):
 		if is_click_on_visible_pixel(player.get_global_mouse_position()):
-			print("\n=======\nCat1 clicked, changing state to pethold \n=======");
+			# print("\n=======\nCat1 clicked, changing state to pethold \n=======");
 			
 			e_current_local_state = GOTO_STATES.GO_HOLD
 			player._change_state(load("res://scripts/player/states/petHoldState.gd").new())
