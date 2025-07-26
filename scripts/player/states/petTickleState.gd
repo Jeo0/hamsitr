@@ -2,6 +2,8 @@ extends PlayerState
 
 func exit() -> void:
 	player.collision_petting.disabled = true;
+	player.azy_animation_sprite.hide()
+	player.azy_animation_sprite.stop()
 
 func enter() -> void:
 	player.animation_sprite.play("petting_tickling")

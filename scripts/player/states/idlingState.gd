@@ -57,7 +57,6 @@ func _change_seconds_left_to_change_state(m_override_max: float = 1.0) -> void:
 	e_seconds_left_to_change_state = randf_range(e_min_idle_time, e_max_idle_time * m_override_max)
 
 func update(delta) -> void:
-	_setup_bitmask()
 	# print("time_left: " + str(player.state_timer.time_left).pad_decimals(3)
 		# + "\t\tvelocity: " + str(player.velocity.length()).pad_decimals(3))
 	pass
@@ -85,10 +84,28 @@ func _determine_what_state() -> GOTO_STATES:
 		return GOTO_STATES.GO_TICKLE
 
 
-
 ################################################################
 ################################################################ 
 ################################################################
+func on_collision_area_input_event(viewport, event , shape_idx) -> void:
+	"""
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		print("greeting area clicked;\nproceeding to roll")
+		player._change_state(load("res://scripts/player/states/rollingState.gd").new())
+	"""
+	#if event.is_action_pressed("click"):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		print("\n=======\nCat1 clicked, changing state to pethold \n=======");
+		
+		player._change_state(load("res://scripts/player/states/petHoldState.gd").new())
+
+	# if event.is_action_pressed("rclick"):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+		print("\n=======\ngraabiingg dis fkr\n=======");
+		player._change_state(load("res://scripts/player/states/grabbingState.gd").new())
+		
+
+"""
 var bitmask: BitMap
 func _setup_bitmask():
 	var tex = player.animation_sprite.sprite_frames.get_frame_texture(player.animation_sprite.animation, player.animation_sprite.frame)
@@ -120,3 +137,5 @@ func handle_input(event):
 		if is_click_on_visible_pixel(player.get_global_mouse_position()):
 			player._change_state(load("res://scripts/player/states/grabbingState.gd").new())
 		
+
+"""

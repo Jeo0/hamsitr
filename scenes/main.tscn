@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://cahetioi8rorg"]
+[gd_scene load_steps=89 format=3 uid="uid://cahetioi8rorg"]
 
 [ext_resource type="Script" uid="uid://bwb5vy5qwblwx" path="res://scripts/player/hamzter.gd" id="1_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://b5ijccnyphfkj" path="res://assets/cat_animations/intro_greetings/intro_greetings0000.png" id="2_vxglm"]
@@ -79,7 +79,6 @@
 [ext_resource type="Texture2D" uid="uid://cykpnw640381c" path="res://assets/cat_animations/azy_message/stupid0002.png" id="78_r4ag1"]
 [ext_resource type="Texture2D" uid="uid://c62bln14yy6ov" path="res://assets/cat_animations/azy_message/stupid0003.png" id="79_v0wtd"]
 [ext_resource type="Texture2D" uid="uid://b35rii2060p5p" path="res://assets/cat_animations/azy_message/stupid0004.png" id="80_sgvw8"]
-[ext_resource type="PackedScene" uid="uid://c1w4mk8n1l3k6" path="res://scenes/mouse.tscn" id="80_xaipn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxglm"]
 
@@ -388,29 +387,29 @@ animations = [{
 
 [node name="MainLevel" type="Node2D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="map" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="map"]
 position = Vector2(950, 663)
 scale = Vector2(109.29, 0.981)
 shape = SubResource("RectangleShape2D_vxglm")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+[node name="Sprite2D" type="Sprite2D" parent="map/CollisionShape2D"]
 scale = Vector2(1.81957, 0.112509)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="map"]
 position = Vector2(955, -6.10352e-05)
 scale = Vector2(100.066, 0.00157015)
 shape = SubResource("RectangleShape2D_vxglm")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="map"]
 position = Vector2(1155, 532)
 scale = Vector2(0.00108648, 55.7734)
 shape = SubResource("RectangleShape2D_vxglm")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="map"]
 position = Vector2(0, 542)
-scale = Vector2(0.00143098, 54.4275)
+scale = Vector2(0.236, 12845)
 shape = SubResource("RectangleShape2D_vxglm")
 
 [node name="Hamzter" type="CharacterBody2D" parent="."]
@@ -421,29 +420,28 @@ script = ExtResource("1_2wyq8")
 [node name="animationSprite" type="AnimatedSprite2D" parent="Hamzter"]
 scale = Vector2(0.846637, 0.846637)
 sprite_frames = SubResource("SpriteFrames_bu4jf")
-animation = &"grabbing"
+animation = &"intro_greetings1"
 autoplay = "intro_greetings1"
 
 [node name="coll_area_greetings" type="Area2D" parent="Hamzter"]
 
 [node name="collision_greetings" type="CollisionShape2D" parent="Hamzter/coll_area_greetings"]
-visible = false
 position = Vector2(-56.4104, 274.862)
 scale = Vector2(0.932555, 0.932555)
 shape = SubResource("RectangleShape2D_2wyq8")
 
 [node name="coll_area_rolling" type="Area2D" parent="Hamzter"]
+visible = false
 
 [node name="collision_rolling" type="CollisionShape2D" parent="Hamzter/coll_area_rolling"]
-visible = false
 position = Vector2(25.6409, 71.7947)
 scale = Vector2(24.885, 20.8021)
 shape = SubResource("CircleShape2D_c6pm6")
 
 [node name="coll_area_idle" type="Area2D" parent="Hamzter"]
+visible = false
 
 [node name="collision_idle" type="CollisionShape2D" parent="Hamzter/coll_area_idle"]
-visible = false
 position = Vector2(0, 15.3845)
 scale = Vector2(20.3674, 27.0971)
 shape = SubResource("CapsuleShape2D_5q0nq")
@@ -454,16 +452,16 @@ shape = SubResource("CapsuleShape2D_5q0nq")
 wait_time = 0.1
 
 [node name="coll_area_walking" type="Area2D" parent="Hamzter"]
+visible = false
 
 [node name="collision_walking" type="CollisionShape2D" parent="Hamzter/coll_area_walking"]
-visible = false
 scale = Vector2(18.568, 30.98)
 shape = SubResource("CircleShape2D_152kg")
 
 [node name="coll_area_petting" type="Area2D" parent="Hamzter"]
+visible = false
 
 [node name="collision_petting" type="CollisionShape2D" parent="Hamzter/coll_area_petting"]
-visible = false
 scale = Vector2(16.8522, 26.8902)
 shape = SubResource("CircleShape2D_r4e17")
 
@@ -474,22 +472,31 @@ sprite_frames = SubResource("SpriteFrames_6nfnn")
 animation = &"heart"
 
 [node name="coll_area_grabbing" type="Area2D" parent="Hamzter"]
+visible = false
 
 [node name="collision_grabbing" type="CollisionShape2D" parent="Hamzter/coll_area_grabbing"]
-visible = false
 position = Vector2(0, -56.4104)
 rotation = 0.299862
 scale = Vector2(38.7539, 30.0792)
 shape = SubResource("CircleShape2D_ndrjj")
 
-[node name="Mouse" parent="." instance=ExtResource("80_xaipn")]
-
 [connection signal="input_event" from="Hamzter" to="Hamzter" method="_on_input_event"]
 [connection signal="animation_finished" from="Hamzter/animationSprite" to="Hamzter" method="_on_animation_sprite_animation_finished"]
 [connection signal="frame_changed" from="Hamzter/animationSprite" to="Hamzter" method="_on_animation_sprite_frame_changed"]
 [connection signal="input_event" from="Hamzter/coll_area_greetings" to="Hamzter" method="_on_collision_area_input_event"]
+[connection signal="mouse_entered" from="Hamzter/coll_area_greetings" to="Hamzter" method="_on_coll_area_mouse_entered"]
+[connection signal="input_event" from="Hamzter/coll_area_rolling" to="Hamzter" method="_on_collision_area_input_event"]
+[connection signal="mouse_entered" from="Hamzter/coll_area_rolling" to="Hamzter" method="_on_coll_area_mouse_entered"]
+[connection signal="input_event" from="Hamzter/coll_area_idle" to="Hamzter" method="_on_collision_area_input_event"]
+[connection signal="mouse_entered" from="Hamzter/coll_area_idle" to="Hamzter" method="_on_coll_area_mouse_entered"]
 [connection signal="timeout" from="Hamzter/state_timer" to="Hamzter" method="_on_state_timer_timeout"]
 [connection signal="timeout" from="Hamzter/local_timer" to="Hamzter" method="_on_local_timer_timeout"]
+[connection signal="input_event" from="Hamzter/coll_area_walking" to="Hamzter" method="_on_collision_area_input_event"]
+[connection signal="mouse_entered" from="Hamzter/coll_area_walking" to="Hamzter" method="_on_coll_area_mouse_entered"]
+[connection signal="input_event" from="Hamzter/coll_area_petting" to="Hamzter" method="_on_collision_area_input_event"]
+[connection signal="mouse_entered" from="Hamzter/coll_area_petting" to="Hamzter" method="_on_coll_area_mouse_entered"]
 [connection signal="timeout" from="Hamzter/azy_timer" to="Hamzter" method="_on_azy_timer_timeout"]
 [connection signal="animation_finished" from="Hamzter/azy_animationSprite" to="Hamzter" method="_on_azy_animation_sprite_animation_finished"]
 [connection signal="animation_looped" from="Hamzter/azy_animationSprite" to="Hamzter" method="_on_azy_animation_sprite_animation_looped"]
+[connection signal="input_event" from="Hamzter/coll_area_grabbing" to="Hamzter" method="_on_collision_area_input_event"]
+[connection signal="mouse_entered" from="Hamzter/coll_area_grabbing" to="Hamzter" method="_on_coll_area_mouse_entered"]

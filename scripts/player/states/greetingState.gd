@@ -36,11 +36,15 @@ func handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):
 		pass
 		
-		
-func on_collision_area_input_event(viewport, event: InputEvent, shape_idx: int) -> void:
+func on_coll_area_mouse_entered() -> void:
+	pass
+	
+# handle the input
+func on_collision_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		print("Greeting area clicked.")
+		print("greeting area clicked;\nproceeding to roll")
 		player._change_state(load("res://scripts/player/states/rollingState.gd").new())
+		
 """
 	
 var current_frame := -1

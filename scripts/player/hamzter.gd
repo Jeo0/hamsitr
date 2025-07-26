@@ -21,6 +21,12 @@ const NEAR_DISTANCE: float = 500.0
 @onready var state_timer: Timer = $state_timer
 @onready var local_timer: Timer = $local_timer
 
+# mouse cursors
+var cursor_left_click = preload("res://assets/mouse/cursors-pic-64x64/petting.png")
+var cursor_right_click = preload("res://assets/mouse/cursors-pic-64x64/grabbing.png")
+var cursor_default = preload("res://assets/mouse/cursors-pic-64x64/normal.png")
+var cursor_dimension: Vector2 = preload("res://assets/mouse/cursors-pic-64x64/grabbing.png").get_size()
+
 var current_state: PlayerState
 var bitmask: BitMap = BitMap.new()
 
@@ -101,7 +107,31 @@ func _on_azy_animation_sprite_animation_looped() -> void:
 		current_state.on_azy_animation_sprite_animation_looped()
 
 
-func _on_collision_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	pass # Replace with function body.
+func _on_collision_area_input_event(viewport: Node, event: InputEventMouseButton, shape_idx: int) -> void:
+	pass 
 	if current_state:
+		# all mouse input are decided here
+		if event is InputEventMouseButton and event.pressed:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				print("Left click on area")
+				Input.set_custom_mouse_cursor(cursor_left_click, Input.CURSOR_DRAG, cursor_dimension/2)
+			elif event.button_index == MOUSE_BUTTON_RIGHT:
+				print("Right click on area")
+				Input.set_custom_mouse_cursor(cursor_right_click, Input.CURSOR_MOVE, cursor_dimension/2)
+		else:
+			Input.set_custom_mouse_cursor(cursor_default, Input.CURSOR_ARROW, cursor_dimension/2)
+			
+		# and then proceed to override 
+		# for changing states
 		current_state.on_collision_area_input_event(viewport, event, shape_idx)
+
+
+func _on_coll_area_mouse_entered() -> void:
+	pass 
+	if current_state:
+		# always default to default mouse
+		Input.set_custom_mouse_cursor(cursor_default, Input.CURSOR_ARROW, cursor_dimension/2)
+		
+		# and then proceed to override 
+		# for changing states
+		current_state.on_coll_area_mouse_entered()

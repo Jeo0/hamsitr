@@ -1,6 +1,7 @@
 extends Node
 
 
+""" uses rigid body
 func _process(delta: float) -> void:
 	_process_mouse()
 	
@@ -40,3 +41,5 @@ func _process_mouse():
 	mouse_body.scale = Vector2(m_size, m_size)
 	mouse_body.rotation = 0
 	
+
+"""
