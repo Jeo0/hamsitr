@@ -5,8 +5,8 @@ func enter():
 	player.animation_sprite.play("intro_greetings1")
 	player.coll_area_greetings.monitoring = true 
 	player.coll_area_greetings.input_pickable = true
-	
 	player.collision_greetings.disabled = false
+	
 	player.collision_rolling.disabled = true
 	player.collision_idle.disabled = true
 	player.collision_walking.disabled = true
@@ -17,8 +17,9 @@ func enter():
 	
 	
 func exit() -> void:
-	player.coll_area_greetings.monitoring = true 
-	player.coll_area_greetings.input_pickable = true
+	player.coll_area_greetings.monitoring = false
+	player.coll_area_greetings.input_pickable = false
+	player.collision_greetings.disabled = true
 	
 
 func on_animation_finished():
@@ -35,14 +36,11 @@ func handle_input(event: InputEvent) -> void:
 	pass
 	if event.is_action_pressed("click"):
 		pass
-		
-func on_coll_area_mouse_entered() -> void:
-	pass
 	
 # handle the input
 func on_collision_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		print("greeting area clicked;\nproceeding to roll")
+		print("greeting area clicked")
 		player._change_state(load("res://scripts/player/states/rollingState.gd").new())
 		
 """

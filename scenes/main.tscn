@@ -431,7 +431,6 @@ scale = Vector2(0.932555, 0.932555)
 shape = SubResource("RectangleShape2D_2wyq8")
 
 [node name="coll_area_rolling" type="Area2D" parent="Hamzter"]
-visible = false
 
 [node name="collision_rolling" type="CollisionShape2D" parent="Hamzter/coll_area_rolling"]
 position = Vector2(25.6409, 71.7947)
@@ -439,7 +438,6 @@ scale = Vector2(24.885, 20.8021)
 shape = SubResource("CircleShape2D_c6pm6")
 
 [node name="coll_area_idle" type="Area2D" parent="Hamzter"]
-visible = false
 
 [node name="collision_idle" type="CollisionShape2D" parent="Hamzter/coll_area_idle"]
 position = Vector2(0, 15.3845)
@@ -485,6 +483,7 @@ shape = SubResource("CircleShape2D_ndrjj")
 [connection signal="frame_changed" from="Hamzter/animationSprite" to="Hamzter" method="_on_animation_sprite_frame_changed"]
 [connection signal="input_event" from="Hamzter/coll_area_greetings" to="Hamzter" method="_on_collision_area_input_event"]
 [connection signal="mouse_entered" from="Hamzter/coll_area_greetings" to="Hamzter" method="_on_coll_area_mouse_entered"]
+[connection signal="mouse_exited" from="Hamzter/coll_area_greetings" to="Hamzter" method="_on_coll_area_mouse_exited"]
 [connection signal="input_event" from="Hamzter/coll_area_rolling" to="Hamzter" method="_on_collision_area_input_event"]
 [connection signal="mouse_entered" from="Hamzter/coll_area_rolling" to="Hamzter" method="_on_coll_area_mouse_entered"]
 [connection signal="input_event" from="Hamzter/coll_area_idle" to="Hamzter" method="_on_collision_area_input_event"]

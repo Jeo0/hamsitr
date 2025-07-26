@@ -9,6 +9,7 @@ func enter() -> void:
 func exit() -> void:
 	player.collision_idle.disabled = false
 	player.collision_grabbing.disabled = true
+	print("exiting grabbing")
 	
 func update(delta: float)  -> void:
 	if e_rclick_is_pressed == true:

@@ -1,5 +1,7 @@
 extends Area2D
 
+"""
+
 
 # Load custom cursor images
 var cursor_left_click = preload("res://assets/mouse/cursors-pic-128x128/petting-gesture.png")
@@ -35,3 +37,5 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited():
 	print("Mouse exited area")
 	Input.set_custom_mouse_cursor(default_cursor, Input.CURSOR_ARROW, Vector2(64,64))
+
+"""

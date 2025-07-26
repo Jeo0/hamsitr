@@ -8,14 +8,19 @@ const NEAR_DISTANCE: float = 500.0
 
 @onready var coll_area_greetings: Area2D = $coll_area_greetings
 @onready var collision_greetings: CollisionShape2D = $coll_area_greetings/collision_greetings
+@onready var coll_area_rolling: Area2D = $coll_area_rolling
 @onready var collision_rolling: CollisionShape2D = $coll_area_rolling/collision_rolling
+@onready var coll_area_idle: Area2D = $coll_area_idle
 @onready var collision_idle: CollisionShape2D = $coll_area_idle/collision_idle
+@onready var coll_area_walking: Area2D = $coll_area_walking
 @onready var collision_walking: CollisionShape2D = $coll_area_walking/collision_walking
+@onready var coll_area_petting: Area2D = $coll_area_petting
 @onready var collision_petting: CollisionShape2D = $coll_area_petting/collision_petting
+@onready var coll_area_grabbing: Area2D = $coll_area_grabbing
+@onready var collision_grabbing: CollisionShape2D = $coll_area_grabbing/collision_grabbing
 
 @onready var azy_timer: Timer = $azy_timer
 @onready var azy_animation_sprite: AnimatedSprite2D = $azy_animationSprite
-@onready var collision_grabbing: CollisionShape2D = $coll_area_grabbing/collision_grabbing
 
 # timers
 @onready var state_timer: Timer = $state_timer
@@ -26,6 +31,7 @@ var cursor_left_click = preload("res://assets/mouse/cursors-pic-64x64/petting.pn
 var cursor_right_click = preload("res://assets/mouse/cursors-pic-64x64/grabbing.png")
 var cursor_default = preload("res://assets/mouse/cursors-pic-64x64/normal.png")
 var cursor_dimension: Vector2 = preload("res://assets/mouse/cursors-pic-64x64/grabbing.png").get_size()
+var cursor_changed: bool = false
 
 var current_state: PlayerState
 var bitmask: BitMap = BitMap.new()
@@ -108,21 +114,26 @@ func _on_azy_animation_sprite_animation_looped() -> void:
 
 
 func _on_collision_area_input_event(viewport: Node, event: InputEventMouseButton, shape_idx: int) -> void:
+	"""
+	handles the mouse cursor
+	"""
 	pass 
-	if current_state:
-		# all mouse input are decided here
-		if event is InputEventMouseButton and event.pressed:
-			if event.button_index == MOUSE_BUTTON_LEFT:
-				print("Left click on area")
-				Input.set_custom_mouse_cursor(cursor_left_click, Input.CURSOR_DRAG, cursor_dimension/2)
-			elif event.button_index == MOUSE_BUTTON_RIGHT:
-				print("Right click on area")
-				Input.set_custom_mouse_cursor(cursor_right_click, Input.CURSOR_MOVE, cursor_dimension/2)
-		else:
-			Input.set_custom_mouse_cursor(cursor_default, Input.CURSOR_ARROW, cursor_dimension/2)
+	print("on hamzter, collision area input event")
+	# all mouse input are decided here
+	if event.pressed:
+		cursor_changed = true 
+		
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			print("Left click on area")
+			Input.set_custom_mouse_cursor(cursor_left_click, Input.CURSOR_ARROW, cursor_dimension/2)
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			print("Right click on area")
+			Input.set_custom_mouse_cursor(cursor_right_click, Input.CURSOR_ARROW, cursor_dimension/2)
 			
+	if current_state:
 		# and then proceed to override 
 		# for changing states
+		print("what")
 		current_state.on_collision_area_input_event(viewport, event, shape_idx)
 
 
@@ -130,8 +141,27 @@ func _on_coll_area_mouse_entered() -> void:
 	pass 
 	if current_state:
 		# always default to default mouse
-		Input.set_custom_mouse_cursor(cursor_default, Input.CURSOR_ARROW, cursor_dimension/2)
+		# Input.set_custom_mouse_cursor(cursor_default, Input.CURSOR_ARROW, cursor_dimension/2)
 		
 		# and then proceed to override 
 		# for changing states
 		current_state.on_coll_area_mouse_entered()
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and not event.pressed and cursor_changed:
+		# Reset cursor globally when mouse is released
+		print("setting to default")
+		Input.set_custom_mouse_cursor(cursor_default, Input.CURSOR_ARROW, cursor_dimension/2)
+		cursor_changed = false
+
+
+func _on_coll_area_mouse_exited() -> void:
+	pass 
+	if cursor_changed:
+		print("exiting")
+		Input.set_custom_mouse_cursor(cursor_default, Input.CURSOR_ARROW, cursor_dimension/2)
+		cursor_changed = false
+	if current_state:
+		current_state.on_coll_area_mouse_exited()
+	

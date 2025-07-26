@@ -19,3 +19,4 @@ func on_azy_animation_sprite_animation_finished(): pass
 func on_azy_animation_sprite_animation_looped(): pass
 func on_collision_area_input_event(viewport, event, shape_idx): pass
 func on_coll_area_mouse_entered(): pass
+func on_coll_area_mouse_exited(): pass

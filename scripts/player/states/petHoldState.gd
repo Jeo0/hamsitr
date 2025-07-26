@@ -15,12 +15,14 @@ func enter() -> void: # Replace with function body.
 	player.animation_sprite.play("petting_holding")
 	player.animation_sprite.frame = 0;
 	player.animation_sprite.pause()
-	player.collision_idle.disabled = true
-	player.collision_walking.disabled = true
-	player.collision_petting.disabled = false;
+	#player.collision_idle.disabled = true
+	#player.collision_walking.disabled = true
+	#player.collision_petting.disabled = false;
 	
-	# _change_seconds_left_to_change_state()
-	# player.state_timer.start(e_seconds_left_to_change_state)
+	player.coll_area_idle.monitoring = false
+	player.coll_area_idle.input_pickable = false
+	player.collision_idle.disabled = true
+	
 
 
 const e_chance_go_hold: float = 0.6 # 0.96						# 96%
@@ -83,12 +85,35 @@ func _process_current_state(delta: float) -> void:
 	# print()
 	pass
 
-
 #########################################################################
 #########################################################################
 ############### HANDLE THE INPUT ########################################
 #########################################################################
 #########################################################################
+var e_accumulation_delta: float = 0
+var e_original_location: float = 0
+func handle_input(event):
+	# record the destruction history
+	# (movement delta) accumulate
+	"""
+	print("mousevelo: " + str(Input.get_last_mouse_velocity().length()).pad_decimals(3)
+		+ "\tmousescreen: " + str(Input.get_last_mouse_screen_velocity().length()).pad_decimals(3))
+	"""
+		
+	# lets do it quick and dirty
+	if Input.get_last_mouse_velocity().length() >= player.g_tickle_threshold: 
+		player._change_state(load("res://scripts/player/states/petTickleState.gd").new())
+		
+func on_collision_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	print("-------collision area input in pethold")
+	if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		player.cursor_changed = true 
+		e_current_local_state = GOTO_STATES.GO_NOHOLD
+		
+		player._change_state(load("res://scripts/player/states/petNoHoldAwaitPetState.gd").new())
+
+	
+"""
 var bitmask: BitMap
 func _setup_bitmask():
 	var tex = player.animation_sprite.sprite_frames.get_frame_texture(player.animation_sprite.animation, player.animation_sprite.frame)
@@ -109,24 +134,4 @@ func is_click_on_visible_pixel(global_pos: Vector2) -> bool:
 	return bitmask.get_bitv(image_pos)
 
 
-
-var e_accumulation_delta: float = 0
-var e_original_location: float = 0
-func handle_input(event):
-	if event.is_action_released("click"):
-		e_current_local_state = GOTO_STATES.GO_NOHOLD
-		player._change_state(load("res://scripts/player/states/petNoHoldAwaitPetState.gd").new())
-		# print("released click")
-	
-	
-	# record the destruction history
-	# (movement delta) accumulate
-	"""
-	print("mousevelo: " + str(Input.get_last_mouse_velocity().length()).pad_decimals(3)
-		+ "\tmousescreen: " + str(Input.get_last_mouse_screen_velocity().length()).pad_decimals(3))
-	"""
-		
-	# lets do it quick and dirty
-	if Input.get_last_mouse_velocity().length() >= player.g_tickle_threshold: 
-		player._change_state(load("res://scripts/player/states/petTickleState.gd").new())
-	
+"""

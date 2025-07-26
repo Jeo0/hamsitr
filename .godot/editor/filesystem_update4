@@ -15,3 +15,5 @@ res://scripts/Behaviors/mouse_behaviour.gd
 res://scripts/coll_area_greetings.gd
 res://scenes/game.tscn
 res://scripts/player/states/petTickleState.gd
+res://scripts/player/states/rollingState.gd
+res://scripts/player/states/petHoldState.gd

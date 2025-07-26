@@ -2,15 +2,21 @@
 extends PlayerState
 
 func exit():
+	player.coll_area_idle.monitoring = false
+	player.coll_area_idle.input_pickable = false
 	player.collision_idle.disabled = true
 
 func enter():
 	player.animation_sprite.play("idling")
-	player.collision_greetings.disabled = true
-	player.collision_rolling.disabled = true
-	player.collision_petting.disabled = true
-	player.collision_walking.disabled = true
+	
+	player.coll_area_idle.monitoring = true 
+	player.coll_area_idle.input_pickable = true
 	player.collision_idle.disabled = false
+	
+	#player.collision_greetings.disabled = true
+	#player.collision_rolling.disabled = true
+	#player.collision_petting.disabled = true
+	#player.collision_walking.disabled = true
 	
 	# set the local state
 	e_current_local_state = GOTO_STATES.UNDECIDED
@@ -87,23 +93,42 @@ func _determine_what_state() -> GOTO_STATES:
 ################################################################
 ################################################################ 
 ################################################################
-func on_collision_area_input_event(viewport, event , shape_idx) -> void:
+func on_collision_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	"""
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		print("greeting area clicked;\nproceeding to roll")
 		player._change_state(load("res://scripts/player/states/rollingState.gd").new())
 	"""
-	#if event.is_action_pressed("click"):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+	print("-------collision area input in idle ")
+	if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		player.cursor_changed = true 
 		print("\n=======\nCat1 clicked, changing state to pethold \n=======");
 		
 		player._change_state(load("res://scripts/player/states/petHoldState.gd").new())
 
-	# if event.is_action_pressed("rclick"):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+	if event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+		player.cursor_changed = true 
 		print("\n=======\ngraabiingg dis fkr\n=======");
 		player._change_state(load("res://scripts/player/states/grabbingState.gd").new())
 		
+
+#func on_collision_area_input_event(viewport: Node, event: InputEventMouseButton, shape_idx: int) -> void:
+	#"""
+	#handles the mouse cursor
+	#"""
+	#pass 
+	#print("on hamzter, collision area input event")
+	## all mouse input are decided here
+	#if event.pressed:
+		#player.cursor_changed = true 
+		#
+		#if event.button_index == MOUSE_BUTTON_LEFT:
+			#print("Left click on area")
+			#Input.set_custom_mouse_cursor(cursor_left_click, Input.CURSOR_ARROW, cursor_dimension/2)
+		#if event.button_index == MOUSE_BUTTON_RIGHT:
+			#print("Right click on area")
+			#Input.set_custom_mouse_cursor(cursor_right_click, Input.CURSOR_ARROW, cursor_dimension/2)
+			
 
 """
 var bitmask: BitMap
