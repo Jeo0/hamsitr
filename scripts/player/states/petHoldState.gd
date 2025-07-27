@@ -12,17 +12,22 @@ enum GOTO_STATES{
 
 # Called when the node enters the scene tree for the first time.
 func enter() -> void: # Replace with function body.
-	player.animation_sprite.play("petting_holding")
-	player.animation_sprite.frame = 0;
-	player.animation_sprite.pause()
 	#player.collision_idle.disabled = true
 	#player.collision_walking.disabled = true
 	#player.collision_petting.disabled = false;
 	
-	player.coll_area_idle.monitoring = false
-	player.coll_area_idle.input_pickable = false
-	player.collision_idle.disabled = true
+	player.coll_area_petting.monitoring = true
+	player.coll_area_petting.input_pickable = true
+	player.collision_petting.disabled = false
 	
+	player.animation_sprite.play("petting_holding")
+	player.animation_sprite.frame = 0;
+	player.animation_sprite.pause()
+	
+func exit() -> void:
+	player.coll_area_petting.monitoring = false
+	player.coll_area_petting.input_pickable = false
+	player.collision_petting.disabled = true
 
 
 const e_chance_go_hold: float = 0.6 # 0.96						# 96%
@@ -104,13 +109,16 @@ func handle_input(event):
 	if Input.get_last_mouse_velocity().length() >= player.g_tickle_threshold: 
 		player._change_state(load("res://scripts/player/states/petTickleState.gd").new())
 		
-func on_collision_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	print("-------collision area input in pethold")
-	if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		player.cursor_changed = true 
+	# left click: bukaka
+	if Input.is_action_just_released("click"):
 		e_current_local_state = GOTO_STATES.GO_NOHOLD
-		
 		player._change_state(load("res://scripts/player/states/petNoHoldAwaitPetState.gd").new())
+		
+	# right click: grab 
+	if Input.is_action_just_released("rclick"):
+		player.cursor_changed = true 
+		print("\n=======\ngraabiingg dis fkr\n=======");
+		player._change_state(load("res://scripts/player/states/grabbingState.gd").new())
 
 	
 """

@@ -1,15 +1,18 @@
 extends PlayerState
 
 func exit() -> void:
+	player.coll_area_petting.monitoring = false
+	player.coll_area_petting.input_pickable = false
 	player.collision_petting.disabled = true;
 	player.azy_animation_sprite.hide()
 	player.azy_animation_sprite.stop()
 
 func enter() -> void:
-	player.animation_sprite.play("petting_tickling")
-	player.collision_idle.disabled = true
-	player.collision_walking.disabled = true
+	player.coll_area_petting.monitoring = true
+	player.coll_area_petting.input_pickable = true
 	player.collision_petting.disabled = false;
+	
+	player.animation_sprite.play("petting_tickling")
 	
 	
 

@@ -1,4 +1,4 @@
-# res://player/states/PlayerState.gd
+# res://scripts/player/states/hamzterBaseState.gd
 extends Node
 
 class_name PlayerState

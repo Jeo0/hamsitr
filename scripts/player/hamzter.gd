@@ -1,4 +1,4 @@
-# res://player/Player.gd
+# res://scripts/player/hamzter.gd
 extends CharacterBody2D
 
 const WALK_SPEED: float = 500.0
@@ -18,6 +18,7 @@ const NEAR_DISTANCE: float = 500.0
 @onready var collision_petting: CollisionShape2D = $coll_area_petting/collision_petting
 @onready var coll_area_grabbing: Area2D = $coll_area_grabbing
 @onready var collision_grabbing: CollisionShape2D = $coll_area_grabbing/collision_grabbing
+@onready var collision_default_grabbing: CollisionShape2D = $collision_default_grabbing # the default collision handler
 
 @onready var azy_timer: Timer = $azy_timer
 @onready var azy_animation_sprite: AnimatedSprite2D = $azy_animationSprite
@@ -30,7 +31,7 @@ const NEAR_DISTANCE: float = 500.0
 var cursor_left_click = preload("res://assets/mouse/cursors-pic-64x64/petting.png")
 var cursor_right_click = preload("res://assets/mouse/cursors-pic-64x64/grabbing.png")
 var cursor_default = preload("res://assets/mouse/cursors-pic-64x64/normal.png")
-var cursor_dimension: Vector2 = preload("res://assets/mouse/cursors-pic-64x64/grabbing.png").get_size()
+var cursor_dimension: Vector2 = cursor_default.get_size()
 var cursor_changed: bool = false
 
 var current_state: PlayerState
@@ -52,8 +53,6 @@ func _physics_process(delta):
 func _process(delta):
 	if current_state:
 		current_state.update(delta)
-	if Input.is_action_just_pressed("escac"):
-		get_tree().quit()
 	
 	# test wifi access point
 	# UPS
@@ -71,6 +70,30 @@ func _process(delta):
 func _unhandled_input(event):
 	if current_state:
 		current_state.handle_input(event)
+	
+	""" do this event driven """
+	if Input.is_action_just_pressed("escac"):
+		get_tree().quit()
+		
+	""" CONTEXT: handles the mouse cursor """
+	# normal
+	if event is InputEventMouseButton and not event.pressed and cursor_changed:
+		# Reset cursor globally when mouse is released
+		#print("setting to default")
+		Input.set_custom_mouse_cursor(cursor_default, Input.CURSOR_ARROW, cursor_dimension/2)
+		cursor_changed = false
+	
+	# left click and right click		
+	if event is InputEventMouseButton and event.pressed:
+		cursor_changed = true 
+		
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			print("Left click on area")
+			Input.set_custom_mouse_cursor(cursor_left_click, Input.CURSOR_ARROW, cursor_dimension/2)
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			print("Right click on area")
+			Input.set_custom_mouse_cursor(cursor_right_click, Input.CURSOR_ARROW, cursor_dimension/2)
+			
 
 func _on_animation_sprite_animation_finished():
 	if current_state:
@@ -113,27 +136,8 @@ func _on_azy_animation_sprite_animation_looped() -> void:
 		current_state.on_azy_animation_sprite_animation_looped()
 
 
-func _on_collision_area_input_event(viewport: Node, event: InputEventMouseButton, shape_idx: int) -> void:
-	"""
-	handles the mouse cursor
-	"""
-	pass 
-	print("on hamzter, collision area input event")
-	# all mouse input are decided here
-	if event.pressed:
-		cursor_changed = true 
-		
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			print("Left click on area")
-			Input.set_custom_mouse_cursor(cursor_left_click, Input.CURSOR_ARROW, cursor_dimension/2)
-		if event.button_index == MOUSE_BUTTON_RIGHT:
-			print("Right click on area")
-			Input.set_custom_mouse_cursor(cursor_right_click, Input.CURSOR_ARROW, cursor_dimension/2)
-			
+func _on_collision_area_input_event(viewport: Node, event, shape_idx: int) -> void:
 	if current_state:
-		# and then proceed to override 
-		# for changing states
-		print("what")
 		current_state.on_collision_area_input_event(viewport, event, shape_idx)
 
 
@@ -141,25 +145,17 @@ func _on_coll_area_mouse_entered() -> void:
 	pass 
 	if current_state:
 		# always default to default mouse
-		# Input.set_custom_mouse_cursor(cursor_default, Input.CURSOR_ARROW, cursor_dimension/2)
+		Input.set_custom_mouse_cursor(cursor_default, Input.CURSOR_ARROW, cursor_dimension/2)
 		
-		# and then proceed to override 
-		# for changing states
 		current_state.on_coll_area_mouse_entered()
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and not event.pressed and cursor_changed:
-		# Reset cursor globally when mouse is released
-		print("setting to default")
-		Input.set_custom_mouse_cursor(cursor_default, Input.CURSOR_ARROW, cursor_dimension/2)
-		cursor_changed = false
-
+	pass
 
 func _on_coll_area_mouse_exited() -> void:
 	pass 
 	if cursor_changed:
-		print("exiting")
 		Input.set_custom_mouse_cursor(cursor_default, Input.CURSOR_ARROW, cursor_dimension/2)
 		cursor_changed = false
 	if current_state:

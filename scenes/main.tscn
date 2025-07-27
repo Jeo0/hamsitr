@@ -81,6 +81,7 @@
 [ext_resource type="Texture2D" uid="uid://b35rii2060p5p" path="res://assets/cat_animations/azy_message/stupid0004.png" id="80_sgvw8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxglm"]
+size = Vector2(623.57, 191.577)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bu4jf"]
 animations = [{
@@ -390,37 +391,37 @@ animations = [{
 [node name="map" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="map"]
-position = Vector2(950, 663)
-scale = Vector2(109.29, 0.981)
+position = Vector2(950, 774.974)
+scale = Vector2(125.797, 1.30523)
 shape = SubResource("RectangleShape2D_vxglm")
 
 [node name="Sprite2D" type="Sprite2D" parent="map/CollisionShape2D"]
 scale = Vector2(1.81957, 0.112509)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="map"]
-position = Vector2(955, -6.10352e-05)
-scale = Vector2(100.066, 0.00157015)
+position = Vector2(932, -164)
+scale = Vector2(-231270, 1.723)
 shape = SubResource("RectangleShape2D_vxglm")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="map"]
-position = Vector2(1155, 532)
-scale = Vector2(0.00108648, 55.7734)
+position = Vector2(1285, 563)
+scale = Vector2(0.443724, 1419.99)
 shape = SubResource("RectangleShape2D_vxglm")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="map"]
-position = Vector2(0, 542)
-scale = Vector2(0.236, 12845)
+position = Vector2(-171, 538)
+scale = Vector2(0.556, 30261.9)
 shape = SubResource("RectangleShape2D_vxglm")
 
 [node name="Hamzter" type="CharacterBody2D" parent="."]
-position = Vector2(595, 555)
+position = Vector2(606, 560)
 scale = Vector2(0.195, 0.195)
 script = ExtResource("1_2wyq8")
 
 [node name="animationSprite" type="AnimatedSprite2D" parent="Hamzter"]
 scale = Vector2(0.846637, 0.846637)
 sprite_frames = SubResource("SpriteFrames_bu4jf")
-animation = &"intro_greetings1"
+animation = &"idling"
 autoplay = "intro_greetings1"
 
 [node name="coll_area_greetings" type="Area2D" parent="Hamzter"]
@@ -478,7 +479,12 @@ rotation = 0.299862
 scale = Vector2(38.7539, 30.0792)
 shape = SubResource("CircleShape2D_ndrjj")
 
-[connection signal="input_event" from="Hamzter" to="Hamzter" method="_on_input_event"]
+[node name="collision_default_grabbing" type="CollisionShape2D" parent="Hamzter"]
+position = Vector2(0, -56.4104)
+rotation = 0.299862
+scale = Vector2(38.7539, 30.0792)
+shape = SubResource("CircleShape2D_ndrjj")
+
 [connection signal="animation_finished" from="Hamzter/animationSprite" to="Hamzter" method="_on_animation_sprite_animation_finished"]
 [connection signal="frame_changed" from="Hamzter/animationSprite" to="Hamzter" method="_on_animation_sprite_frame_changed"]
 [connection signal="input_event" from="Hamzter/coll_area_greetings" to="Hamzter" method="_on_collision_area_input_event"]

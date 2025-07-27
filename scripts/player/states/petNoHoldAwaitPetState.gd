@@ -17,19 +17,29 @@ var e_seconds_left_to_change_state: float
 
 
 func enter() -> void:
-	player.animation_sprite.play("petting_no_hold_await_pet")
-	player.animation_sprite.frame = 0;
-	player.animation_sprite.pause()
-	player.collision_idle.disabled = true
-	player.collision_walking.disabled = true
-	player.collision_petting.disabled = false;
+	#player.collision_idle.disabled = true
+	#player.collision_walking.disabled = true
+	#player.collision_petting.disabled = false;
+	player.coll_area_petting.monitoring = true
+	player.coll_area_petting.input_pickable = true
+	player.collision_petting.disabled = false
 	
 	_change_seconds_left_to_change_state()
 	player.state_timer.start(e_seconds_left_to_change_state)
 	
+	player.animation_sprite.play("petting_no_hold_await_pet")
+	player.animation_sprite.frame = 0;
+	player.animation_sprite.pause()
+	
+func exit() -> void:
+	player.coll_area_petting.monitoring = false
+	player.coll_area_petting.input_pickable = false
+	player.collision_petting.disabled = true
+	
+	
 	
 func update(delta) -> void:
-	_setup_bitmask()
+	#_setup_bitmask()
 	
 	e_current_local_state = _determine_what_state()
 	match e_current_local_state:
@@ -49,6 +59,22 @@ func on_local_timer_timeout() -> void:
 func on_state_timer_timeout() -> void:
 	player._change_state(load("res://scripts/player/states/walkingState.gd").new())
 
+
+##################################################
+########## HANDLING INPUT ########################
+##################################################
+
+func handle_input(event: InputEvent) -> void:
+	# left click: hold
+	if Input.is_action_just_pressed("click"):
+		#print("presesd handleinput")
+		e_current_local_state = GOTO_STATES.GO_HOLD
+		player._change_state(load("res://scripts/player/states/petHoldState.gd").new())
+		
+	# right click: grab
+	elif Input.is_action_just_pressed("rclick"):
+		player.cursor_changed = true 
+		player._change_state(load("res://scripts/player/states/grabbingState.gd").new())
 
 
 func _determine_what_state() -> GOTO_STATES:
@@ -70,6 +96,7 @@ func _determine_what_state() -> GOTO_STATES:
 func _change_seconds_left_to_change_state(m_override_max: float = 1.0) -> void:
 	e_seconds_left_to_change_state = randf_range(e_min_wait_tickle_time, e_max_wait_tickle_time * m_override_max)
 
+"""
 var bitmask: BitMap
 func _setup_bitmask():
 	var tex = player.animation_sprite.sprite_frames.get_frame_texture(player.animation_sprite.animation, player.animation_sprite.frame)
@@ -96,3 +123,5 @@ func handle_input(event):
 			
 			e_current_local_state = GOTO_STATES.GO_HOLD
 			player._change_state(load("res://scripts/player/states/petHoldState.gd").new())
+
+"""

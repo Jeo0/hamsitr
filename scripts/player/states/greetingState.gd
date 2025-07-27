@@ -1,8 +1,7 @@
-# res://player/states/GreetingState.gd
+# res://scripts/player/states/greetingState.gd
 extends PlayerState
 
 func enter():
-	player.animation_sprite.play("intro_greetings1")
 	player.coll_area_greetings.monitoring = true 
 	player.coll_area_greetings.input_pickable = true
 	player.collision_greetings.disabled = false
@@ -12,8 +11,10 @@ func enter():
 	player.collision_walking.disabled = true
 	player.collision_petting.disabled = true
 	player.collision_grabbing.disabled = true
+	player.collision_default_grabbing.disabled = true
 	
 	player.azy_animation_sprite.hide()
+	player.animation_sprite.play("intro_greetings1")
 	
 	
 func exit() -> void:
@@ -34,14 +35,13 @@ func update(delta: float) -> void:
 	
 func handle_input(event: InputEvent) -> void:
 	pass
-	if event.is_action_pressed("click"):
-		pass
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		#print("greeting area clicked")
+		player._change_state(load("res://scripts/player/states/rollingState.gd").new())
 	
 # handle the input
-func on_collision_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		print("greeting area clicked")
-		player._change_state(load("res://scripts/player/states/rollingState.gd").new())
+func on_collision_area_input_event(viewport: Node, event, shape_idx: int) -> void:
+	pass
 		
 """
 	

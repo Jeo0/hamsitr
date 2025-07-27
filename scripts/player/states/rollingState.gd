@@ -14,16 +14,23 @@ func exit() -> void:
 	
 
 func enter() -> void:
+	#print("\n\n==========\nrolling state enter\n===========")
 	
-	player.animation_sprite.play("intro_rolling")
 	player.coll_area_rolling.monitoring = true 
 	player.coll_area_rolling.input_pickable = true
 	player.collision_rolling.disabled = false
 	
 	remaining_frames = e_number_of_rolling * player.animation_sprite.sprite_frames.get_frame_count("intro_rolling")
 	player.scale *= e_scale_of_rolling
+	# print("ENTERING:\tremaining frames:\t" + str(remaining_frames))
+	
+	# now play it
+	player.animation_sprite.frame = 0
+	player.animation_sprite.play("intro_rolling")
+	
 
 func on_animation_frame_changed():
+	# print("LOOP:\tremaining frames:\t" + str(remaining_frames))
 	remaining_frames -= 1
 	# player.scale *= e_scale_of_rolling
 	if remaining_frames <= 0:

@@ -1,4 +1,4 @@
-# res://player/states/IdleState.gd
+# res://scripts/player/states/idlingState.gd
 extends PlayerState
 
 func exit():
@@ -7,6 +7,7 @@ func exit():
 	player.collision_idle.disabled = true
 
 func enter():
+	#print("\n\n==========\nidling state enter\n===========")
 	player.animation_sprite.play("idling")
 	
 	player.coll_area_idle.monitoring = true 
@@ -93,22 +94,22 @@ func _determine_what_state() -> GOTO_STATES:
 ################################################################
 ################################################################ 
 ################################################################
-func on_collision_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func on_collision_area_input_event(viewport: Node, event, shape_idx: int) -> void:
 	"""
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		print("greeting area clicked;\nproceeding to roll")
 		player._change_state(load("res://scripts/player/states/rollingState.gd").new())
 	"""
-	print("-------collision area input in idle ")
-	if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+	#print("-------collision area input in idle ")
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		player.cursor_changed = true 
-		print("\n=======\nCat1 clicked, changing state to pethold \n=======");
+		#print("\n=======\nCat1 clicked, changing state to pethold \n=======");
 		
 		player._change_state(load("res://scripts/player/states/petHoldState.gd").new())
 
-	if event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
 		player.cursor_changed = true 
-		print("\n=======\ngraabiingg dis fkr\n=======");
+		#print("\n=======\ngraabiingg dis fkr\n=======");
 		player._change_state(load("res://scripts/player/states/grabbingState.gd").new())
 		
 
