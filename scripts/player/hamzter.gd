@@ -43,14 +43,14 @@ var g_tickle_accumulation: float = 0.0
 
 
 func _ready():
-	_change_state(load("res://scripts/player/states/greetingState.gd").new())
+	_change_state(preload("res://scripts/player/states/greetingState.gd").new())
 	
 func _physics_process(delta):
 	if current_state:
 		current_state.physics_update(delta)
 		
-		
 func _process(delta):
+		
 	if current_state:
 		current_state.update(delta)
 	

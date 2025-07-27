@@ -1,12 +1,14 @@
-[gd_scene load_steps=89 format=3 uid="uid://cahetioi8rorg"]
+[gd_scene load_steps=92 format=3 uid="uid://cahetioi8rorg"]
 
 [ext_resource type="Script" uid="uid://bwb5vy5qwblwx" path="res://scripts/player/hamzter.gd" id="1_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://b5ijccnyphfkj" path="res://assets/cat_animations/intro_greetings/intro_greetings0000.png" id="2_vxglm"]
 [ext_resource type="Texture2D" uid="uid://t04muc4thr73" path="res://assets/cat_animations/intro_greetings/intro_greetings0001.png" id="3_2f3dj"]
+[ext_resource type="Texture2D" uid="uid://dhhv8yntgvoe" path="res://assets/cat_animations/grabbing/grabbing2.png" id="3_ih3m7"]
 [ext_resource type="Texture2D" uid="uid://d0vxubxgb81cw" path="res://assets/cat_animations/grabbing/grabbing.png" id="4_ndrjj"]
 [ext_resource type="Texture2D" uid="uid://cg4nln0jq63fa" path="res://assets/cat_animations/intro_idle/intro-idling0000.png" id="4_vc5cj"]
 [ext_resource type="Texture2D" uid="uid://bg836yc4ap0aw" path="res://assets/cat_animations/intro_greetings/intro_greetings0002.png" id="4_yq6so"]
 [ext_resource type="Texture2D" uid="uid://0fj7ku0c6yfh" path="res://assets/cat_animations/intro_greetings/intro_greetings0003.png" id="5_fv21b"]
+[ext_resource type="Texture2D" uid="uid://864smx4n3lcx" path="res://assets/cat_animations/intro_idle/intro-idling0001.png" id="5_ndrjj"]
 [ext_resource type="Texture2D" uid="uid://c4yhyupq3tiv8" path="res://assets/cat_animations/intro_greetings/intro_greetings0004.png" id="6_tel4y"]
 [ext_resource type="Texture2D" uid="uid://ddjp8iiff2ui1" path="res://assets/cat_animations/intro_greetings/intro_greetings0005.png" id="7_qkpxi"]
 [ext_resource type="Texture2D" uid="uid://x0mfjsvqruta" path="res://assets/cat_animations/intro_greetings/intro_greetings0006.png" id="8_5q0nq"]
@@ -29,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://dmd1fdetucqmb" path="res://assets/cat_animations/intro_greetings/intro_greetings0023.png" id="25_j2jfr"]
 [ext_resource type="Texture2D" uid="uid://brnm142nklyjh" path="res://assets/cat_animations/intro_greetings/intro_greetings0024.png" id="26_bjg73"]
 [ext_resource type="Texture2D" uid="uid://bxi4j6s4uclmy" path="res://assets/cat_animations/intro_rolling/intro-rolling0000.png" id="30_nvyfr"]
+[ext_resource type="Texture2D" uid="uid://bafvsqu0u47xe" path="res://assets/cat_animations/intro_greetings/greetings-final2.png" id="31_11yus"]
 [ext_resource type="Texture2D" uid="uid://cn53ig5ft7dsc" path="res://assets/cat_animations/intro_rolling/intro-rolling0001.png" id="31_ty1g6"]
 [ext_resource type="Texture2D" uid="uid://c4i2hbbaycw8b" path="res://assets/cat_animations/intro_rolling/intro-rolling0002.png" id="32_j2jfr"]
 [ext_resource type="Texture2D" uid="uid://o8j8qdfrkfa8" path="res://assets/cat_animations/intro_rolling/intro-rolling0003.png" id="33_bjg73"]
@@ -88,18 +91,24 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_ndrjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ih3m7")
 }],
 "loop": true,
 "name": &"grabbing",
-"speed": 5.0
+"speed": 1.2
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_vc5cj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ndrjj")
 }],
 "loop": true,
 "name": &"idling",
-"speed": 5.0
+"speed": 1.2
 }, {
 "frames": [{
 "duration": 1.0,
@@ -180,6 +189,17 @@ animations = [{
 "loop": false,
 "name": &"intro_greetings1",
 "speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("31_11yus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_bjg73")
+}],
+"loop": true,
+"name": &"intro_greetings2",
+"speed": 1.2
 }, {
 "frames": [{
 "duration": 1.0,
@@ -421,7 +441,7 @@ script = ExtResource("1_2wyq8")
 [node name="animationSprite" type="AnimatedSprite2D" parent="Hamzter"]
 scale = Vector2(0.846637, 0.846637)
 sprite_frames = SubResource("SpriteFrames_bu4jf")
-animation = &"idling"
+animation = &"intro_greetings2"
 autoplay = "intro_greetings1"
 
 [node name="coll_area_greetings" type="Area2D" parent="Hamzter"]
@@ -484,6 +504,8 @@ position = Vector2(0, -56.4104)
 rotation = 0.299862
 scale = Vector2(38.7539, 30.0792)
 shape = SubResource("CircleShape2D_ndrjj")
+
+[node name="ResourcePreloader" type="ResourcePreloader" parent="Hamzter"]
 
 [connection signal="animation_finished" from="Hamzter/animationSprite" to="Hamzter" method="_on_animation_sprite_animation_finished"]
 [connection signal="frame_changed" from="Hamzter/animationSprite" to="Hamzter" method="_on_animation_sprite_frame_changed"]

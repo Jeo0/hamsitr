@@ -24,7 +24,7 @@ func exit() -> void:
 	
 
 func on_animation_finished():
-	# Optional: Go idle after greeting ends
+	player.animation_sprite.play("intro_greetings2")
 	pass
 
 func physics_update(delta: float) -> void:

@@ -1,0 +1,24 @@
+[gd_resource type="VisualShader" load_steps=3 format=3 uid="uid://drxms1oxccrdk"]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_havsm"]
+output_port_for_preview = 0
+parameter_name = "FloatParameter"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_qxxin"]
+output_port_for_preview = 0
+input_name = "uv"
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+"
+graph_offset = Vector2(-461.093, -77.8199)
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource("VisualShaderNodeFloatParameter_havsm")
+nodes/fragment/2/position = Vector2(-320, 380)
+nodes/fragment/3/node = SubResource("VisualShaderNodeInput_qxxin")
+nodes/fragment/3/position = Vector2(-320, 80)

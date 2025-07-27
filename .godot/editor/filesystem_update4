@@ -13,3 +13,6 @@ res://scripts/Clickthrough/ApiManager.cs
 res://scripts/Managers/WindowManager.cs
 res://scripts/Clickthrough/MouseDetection.cs
 res://scripts/player/states/hamzterBaseState.gd
+res://scripts/Shaders/main.gdshader
+res://scripts/Shaders/drawing.tres
+res://scripts/Shaders/try.gdshader
