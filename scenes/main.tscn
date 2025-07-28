@@ -507,6 +507,13 @@ shape = SubResource("CircleShape2D_ndrjj")
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="Hamzter"]
 
+[node name="messagebox" type="Container" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="a_1one" type="Container" parent="messagebox"]
+layout_mode = 2
+
 [connection signal="animation_finished" from="Hamzter/animationSprite" to="Hamzter" method="_on_animation_sprite_animation_finished"]
 [connection signal="frame_changed" from="Hamzter/animationSprite" to="Hamzter" method="_on_animation_sprite_frame_changed"]
 [connection signal="input_event" from="Hamzter/coll_area_greetings" to="Hamzter" method="_on_collision_area_input_event"]

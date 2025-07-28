@@ -2,13 +2,26 @@ extends PlayerState
 
 func enter():
 	player.animation_sprite.play("walking_normal")
-	player.collision_idle.disabled = true
-	player.collision_petting.disabled = true
+	
+	player.coll_area_walking.monitoring = true
+	player.coll_area_walking.input_pickable = true
 	player.collision_walking.disabled = false
 	
 	_determine_where_to_go_next()
 	# sprite_2d.position = e_place_going
 
+func exit():
+	player.coll_area_walking.monitoring = false
+	player.coll_area_walking.input_pickable = false
+	player.collision_walking.disabled = true
+	
+func handle_input(event) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		player._change_state(load("res://scripts/player/states/petHoldState.gd").new())
+		
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+		player._change_state(load("res://scripts/player/states/grabbingState.gd").new())
+		
 
 func update(delta) -> void:
 	# if player is not near the dest, set velocity towards that direction
@@ -19,7 +32,7 @@ func update(delta) -> void:
 	else:
 		
 		# else proceed with slowing down first 
-		if player.velocity.length() >= 0.1:
+		if player.velocity.length() >= 0.5:
 			player.velocity.x = lerp(player.velocity.x, e_direction_going.x * player.velocity.length(), delta * 2.4)
 			player.velocity.y = lerp(player.velocity.y, e_direction_going.y * player.velocity.length(), delta * 2.4)
 		# then change the state

@@ -20,10 +20,10 @@ void fragment() {
 	// Generate a persistent random offset every `interval` seconds
 	float t = floor(TIME / interval);
 	float hash = random(vec2(t, uv.y * noise_scale));
-	
+
 	// Use the alpha channel to determine how close we are to the edge
 	vec4 col = texture(TEXTURE, uv);
-	
+
 	if (col.a < 0.01) {
 		discard;
 	}
@@ -31,7 +31,7 @@ void fragment() {
 	// Approximate edge detection by comparing surrounding alpha values
 	float dx = 1.0 / float(textureSize(TEXTURE, 0).x);
 	float dy = 1.0 / float(textureSize(TEXTURE, 0).y);
-	
+
 	float alpha_center = texture(TEXTURE, uv).a;
 	float alpha_left   = texture(TEXTURE, uv + vec2(-dx, 0.0)).a;
 	float alpha_right  = texture(TEXTURE, uv + vec2(dx, 0.0)).a;
@@ -42,7 +42,7 @@ void fragment() {
 			   + abs(alpha_center - alpha_right)
 			   + abs(alpha_center - alpha_up)
 			   + abs(alpha_center - alpha_down);
-	
+
 	if (edge > edge_width) {
 		// Apply hand-drawn "wiggle" effect
 		float tex_width = float(textureSize(TEXTURE, 0).x);
@@ -52,7 +52,7 @@ void fragment() {
 		float offset_y = (random(vec2(t, uv.x * noise_scale + 10.0)) - 0.5) * strength / tex_height;
 		//float offset_x = (random(vec2(t, uv.y * noise_scale + 5.0)) - 0.5) * strength / textureSize(TEXTURE, 0).x;
 		//float offset_y = (random(vec2(t, uv.x * noise_scale + 10.0)) - 0.5) * strength / textureSize(TEXTURE, 0).y;
-		
+
 		vec2 new_uv = uv + vec2(offset_x, offset_y);
 		COLOR = texture(TEXTURE, new_uv);
 	} else {

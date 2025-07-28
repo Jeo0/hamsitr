@@ -14,8 +14,11 @@ config/name="hamsitr"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 boot_splash/bg_color=Color(1, 1, 1, 1)
-boot_splash/show_image=false
+boot_splash/image="uid://bvdmo6ome57jt"
 config/icon="res://assets/cat_animations/intro_idle/intro_idle.png"
+config/macos_native_icon="uid://cp5d07dr8617a"
+config/windows_native_icon="uid://cp5d07dr8617a"
+boot_splash/minimum_display_time=1010
 
 [autoload]
 

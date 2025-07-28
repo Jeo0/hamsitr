@@ -66,14 +66,16 @@ func on_state_timer_timeout() -> void:
 
 func handle_input(event: InputEvent) -> void:
 	# left click: hold
-	if Input.is_action_just_pressed("click"):
+	#if Input.is_action_just_pressed("click"):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		#print("presesd handleinput")
 		e_current_local_state = GOTO_STATES.GO_HOLD
 		player._change_state(load("res://scripts/player/states/petHoldState.gd").new())
 		
 	# right click: grab
-	elif Input.is_action_just_pressed("rclick"):
-		player.cursor_changed = true 
+	#elif Input.is_action_just_pressed("rclick"):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+		#player.cursor_changed = true 
 		player._change_state(load("res://scripts/player/states/grabbingState.gd").new())
 
 
