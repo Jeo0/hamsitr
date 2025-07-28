@@ -1,7 +1,6 @@
 ## Running on a windows mashin
 1. Download the zip file of this repository *look at dis shit*
-<br>
-<img width="280" height="240" alt="Screenshot 2025-07-28 215311" src="https://github.com/user-attachments/assets/1aad0aaf-734d-46de-a68b-c2702be6b1e5" />
+> <img width="280" height="240" alt="Screenshot 2025-07-28 215311" src="https://github.com/user-attachments/assets/1aad0aaf-734d-46de-a68b-c2702be6b1e5" />
 <br>
 2. Extract it and put it somewhere u want
 <br>
