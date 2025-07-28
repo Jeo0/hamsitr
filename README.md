@@ -3,9 +3,9 @@
 <br>
 <img width="280" height="240" alt="Screenshot 2025-07-28 215311" src="https://github.com/user-attachments/assets/1aad0aaf-734d-46de-a68b-c2702be6b1e5" />
 <br>
-3. Extract it and put it somewhere u want
-4. Go to **build > release**
-5. Run **hamsitr.exe**
+2. Extract it and put it somewhere u want <br>
+3. Go to **build > release** <br>
+4. Run **hamsitr.exe**<br>
 
 
 <br><br><br>
