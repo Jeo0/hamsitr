@@ -544,8 +544,7 @@ script = ExtResource("1_2wyq8")
 [node name="animationSprite" type="AnimatedSprite2D" parent="Hamzter"]
 scale = Vector2(0.846637, 0.846637)
 sprite_frames = SubResource("SpriteFrames_bu4jf")
-animation = &"sitting_petting_A"
-frame_progress = 0.319903
+animation = &"sitting_default"
 
 [node name="coll_area_greetings" type="Area2D" parent="Hamzter"]
 
