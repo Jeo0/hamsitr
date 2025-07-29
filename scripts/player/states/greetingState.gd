@@ -14,8 +14,17 @@ func enter():
 	player.collision_default_grabbing.disabled = true
 	player.collision_sitting.disabled = true
 	
+	# hide the azy and character animation sprites
 	player.azy_animation_sprite.hide()
+	player.azy_animation_sprite.visible = false
+	player.animation_sprite.hide()
+	
+	await get_tree().create_timer(1.0).timeout
+	
+	# wait 1 sec and then show the MC
+	player.animation_sprite.show()
 	player.animation_sprite.play("intro_greetings1")
+
 	
 	
 func exit() -> void:

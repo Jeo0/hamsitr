@@ -15,6 +15,7 @@ func enter() -> void:
 	player.animation_sprite.play("petting_tickling")
 	
 	
+	
 
 var e_current_state: GOTO_STATES = GOTO_STATES.GOTO_GIGGLE
 const e_decay: float = 0.5;

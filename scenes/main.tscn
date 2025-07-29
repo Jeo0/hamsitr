@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://cahetioi8rorg"]
+[gd_scene load_steps=112 format=3 uid="uid://cahetioi8rorg"]
 
 [ext_resource type="Script" uid="uid://bwb5vy5qwblwx" path="res://scripts/player/hamzter.gd" id="1_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://b5ijccnyphfkj" path="res://assets/cat_animations/intro_greetings/intro_greetings0000.png" id="2_vxglm"]
@@ -70,7 +70,9 @@
 [ext_resource type="Texture2D" uid="uid://ccjtox14138no" path="res://assets/cat_animations/sitting/sitting-petting-B0001.png" id="61_mgpkq"]
 [ext_resource type="Texture2D" uid="uid://d2mvp2k7dw7h" path="res://assets/cat_animations/walking-normal/walking-normal0007.png" id="61_xaipn"]
 [ext_resource type="Texture2D" uid="uid://bgifxmftwejsw" path="res://assets/cat_animations/walking-normal/walking-normal0008.png" id="62_ndrjj"]
+[ext_resource type="Texture2D" uid="uid://spbhxg1taefi" path="res://assets/cat_animations/sitting/sitting-semi-pet0000.png" id="62_tc087"]
 [ext_resource type="Texture2D" uid="uid://j363p3d88t4o" path="res://assets/cat_animations/sitting/sitting-transition-to-pet0000.png" id="62_xmrkg"]
+[ext_resource type="Texture2D" uid="uid://c2yr7fr88ebvq" path="res://assets/cat_animations/sitting/sitting-semi-pet0001.png" id="63_73205"]
 [ext_resource type="Texture2D" uid="uid://iysd1m2e8dgy" path="res://assets/cat_animations/walking-normal/walking-normal0009.png" id="63_ih3m7"]
 [ext_resource type="Texture2D" uid="uid://c4d4fbb58wh34" path="res://assets/cat_animations/sitting/sitting-transition-to-pet0001.png" id="63_wvlrk"]
 [ext_resource type="Texture2D" uid="uid://dmm731whwcs30" path="res://assets/cat_animations/walking-normal/walking-normal0010.png" id="64_11yus"]
@@ -311,7 +313,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 2.4,
+"duration": 2.2,
 "texture": ExtResource("56_vrx01")
 }, {
 "duration": 1.0,
@@ -342,6 +344,17 @@ animations = [{
 "loop": true,
 "name": &"sitting_petting_B",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("62_tc087")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_73205")
+}],
+"loop": true,
+"name": &"sitting_semi_pet",
+"speed": 1.7
 }, {
 "frames": [{
 "duration": 1.0,
@@ -531,8 +544,8 @@ script = ExtResource("1_2wyq8")
 [node name="animationSprite" type="AnimatedSprite2D" parent="Hamzter"]
 scale = Vector2(0.846637, 0.846637)
 sprite_frames = SubResource("SpriteFrames_bu4jf")
-animation = &"sitting_default"
-autoplay = "intro_greetings1"
+animation = &"sitting_petting_A"
+frame_progress = 0.319903
 
 [node name="coll_area_greetings" type="Area2D" parent="Hamzter"]
 
@@ -577,6 +590,7 @@ shape = SubResource("CircleShape2D_r4e17")
 [node name="azy_timer" type="Timer" parent="Hamzter"]
 
 [node name="azy_animationSprite" type="AnimatedSprite2D" parent="Hamzter"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_6nfnn")
 animation = &"heart"
 
