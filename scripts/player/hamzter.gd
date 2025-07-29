@@ -19,6 +19,8 @@ const NEAR_DISTANCE: float = 500.0
 @onready var coll_area_grabbing: Area2D = $coll_area_grabbing
 @onready var collision_grabbing: CollisionShape2D = $coll_area_grabbing/collision_grabbing
 @onready var collision_default_grabbing: CollisionShape2D = $collision_default_grabbing # the default collision handler
+@onready var collision_sitting: CollisionShape2D = $collision_sitting
+
 
 @onready var azy_timer: Timer = $azy_timer
 @onready var azy_animation_sprite: AnimatedSprite2D = $azy_animationSprite
@@ -43,6 +45,8 @@ var g_tickle_accumulation: float = 0.0
 
 
 func _ready():
+	await get_tree().create_timer(1.0).timeout
+
 	_change_state(preload("res://scripts/player/states/greetingState.gd").new())
 	
 func _physics_process(delta):
@@ -93,6 +97,14 @@ func _unhandled_input(event):
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			print("Right click on area")
 			Input.set_custom_mouse_cursor(cursor_right_click, Input.CURSOR_ARROW, cursor_dimension/2)
+			
+	""" CONTEXT: handle the sitting """
+	#if event is InputEventKey:
+		#if event.pressed and event.
+			#pass
+	if Input.is_action_just_pressed("spice"):
+		_change_state(load("res://scripts/player/states/sittingState.gd").new())
+		
 			
 
 func _on_animation_sprite_animation_finished():
@@ -151,7 +163,8 @@ func _on_coll_area_mouse_entered() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	pass
+	if current_state:
+		current_state.polling_input(event);
 
 func _on_coll_area_mouse_exited() -> void:
 	pass 

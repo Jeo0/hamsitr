@@ -1,6 +1,6 @@
+CollisionShape2D
 Container
 ResourcePreloader
-CollisionShape2D
 Node
 Area2D
 RigidBody2D

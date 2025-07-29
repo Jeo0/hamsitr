@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://cahetioi8rorg"]
+[gd_scene load_steps=110 format=3 uid="uid://cahetioi8rorg"]
 
 [ext_resource type="Script" uid="uid://bwb5vy5qwblwx" path="res://scripts/player/hamzter.gd" id="1_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://b5ijccnyphfkj" path="res://assets/cat_animations/intro_greetings/intro_greetings0000.png" id="2_vxglm"]
@@ -57,22 +57,39 @@
 [ext_resource type="Texture2D" uid="uid://dum2rsnhk1hjv" path="res://assets/cat_animations/petting-tickling/petting-tickling0001.png" id="53_r4e17"]
 [ext_resource type="Texture2D" uid="uid://bpkcpp7e1tyjb" path="res://assets/cat_animations/walking-normal/walking-normal0000.png" id="54_kjtvk"]
 [ext_resource type="Texture2D" uid="uid://bnlncx0etvges" path="res://assets/cat_animations/walking-normal/walking-normal0001.png" id="55_xrs0c"]
+[ext_resource type="Texture2D" uid="uid://isgp0rrjsaw7" path="res://assets/cat_animations/sitting/sitting-default0000.png" id="56_vrx01"]
 [ext_resource type="Texture2D" uid="uid://ti5lw7q6p7ui" path="res://assets/cat_animations/walking-normal/walking-normal0002.png" id="56_xljpf"]
+[ext_resource type="Texture2D" uid="uid://b7ljmfcc4djfh" path="res://assets/cat_animations/sitting/sitting-default0001.png" id="57_1uevf"]
 [ext_resource type="Texture2D" uid="uid://n82mgc45kwn8" path="res://assets/cat_animations/walking-normal/walking-normal0003.png" id="57_j4bwh"]
 [ext_resource type="Texture2D" uid="uid://cxi6rdfh8sp8a" path="res://assets/cat_animations/walking-normal/walking-normal0004.png" id="58_ksmap"]
+[ext_resource type="Texture2D" uid="uid://db1ip6vphlfpx" path="res://assets/cat_animations/sitting/sitting-petting-A0000.png" id="58_tc087"]
+[ext_resource type="Texture2D" uid="uid://wpr5jr6bjtja" path="res://assets/cat_animations/sitting/sitting-petting-A0001.png" id="59_73205"]
 [ext_resource type="Texture2D" uid="uid://1adlie7apxid" path="res://assets/cat_animations/walking-normal/walking-normal0005.png" id="59_ygd8o"]
+[ext_resource type="Texture2D" uid="uid://c7y2deld2bh47" path="res://assets/cat_animations/sitting/sitting-petting-B0000.png" id="60_0tljd"]
 [ext_resource type="Texture2D" uid="uid://cr16ndpyftcs3" path="res://assets/cat_animations/walking-normal/walking-normal0006.png" id="60_2s0kr"]
+[ext_resource type="Texture2D" uid="uid://ccjtox14138no" path="res://assets/cat_animations/sitting/sitting-petting-B0001.png" id="61_mgpkq"]
 [ext_resource type="Texture2D" uid="uid://d2mvp2k7dw7h" path="res://assets/cat_animations/walking-normal/walking-normal0007.png" id="61_xaipn"]
 [ext_resource type="Texture2D" uid="uid://bgifxmftwejsw" path="res://assets/cat_animations/walking-normal/walking-normal0008.png" id="62_ndrjj"]
+[ext_resource type="Texture2D" uid="uid://j363p3d88t4o" path="res://assets/cat_animations/sitting/sitting-transition-to-pet0000.png" id="62_xmrkg"]
 [ext_resource type="Texture2D" uid="uid://iysd1m2e8dgy" path="res://assets/cat_animations/walking-normal/walking-normal0009.png" id="63_ih3m7"]
+[ext_resource type="Texture2D" uid="uid://c4d4fbb58wh34" path="res://assets/cat_animations/sitting/sitting-transition-to-pet0001.png" id="63_wvlrk"]
 [ext_resource type="Texture2D" uid="uid://dmm731whwcs30" path="res://assets/cat_animations/walking-normal/walking-normal0010.png" id="64_11yus"]
+[ext_resource type="Texture2D" uid="uid://dxcqg8gvvi31k" path="res://assets/cat_animations/sitting/sitting-transition-to-pet0002.png" id="64_engxj"]
 [ext_resource type="Texture2D" uid="uid://c6p0e413fhuo0" path="res://assets/cat_animations/walking-normal/walking-normal0011.png" id="65_b6ruc"]
+[ext_resource type="Texture2D" uid="uid://3lhy65d5000e" path="res://assets/cat_animations/sitting/sitting-transition-to-pet0003.png" id="65_raiwf"]
 [ext_resource type="Texture2D" uid="uid://cksxwy5mhyjcs" path="res://assets/cat_animations/walking-normal/walking-normal0012.png" id="66_155or"]
+[ext_resource type="Texture2D" uid="uid://btbmq8fhxu0i2" path="res://assets/cat_animations/sitting/sitting-transition-to-pet0004.png" id="66_roort"]
+[ext_resource type="Texture2D" uid="uid://cjdqi3osw52r6" path="res://assets/cat_animations/sitting/sitting-transition-to-pet0005.png" id="67_gm02q"]
 [ext_resource type="Texture2D" uid="uid://b527ig57c3p12" path="res://assets/cat_animations/walking-normal/walking-normal0013.png" id="67_vtx2l"]
+[ext_resource type="Texture2D" uid="uid://c7em8up52e5cp" path="res://assets/cat_animations/sitting/sitting-transition-to-pet0006.png" id="68_07pt3"]
 [ext_resource type="Texture2D" uid="uid://dvyxckma83pa3" path="res://assets/cat_animations/azy_message/heart0000.png" id="68_xaipn"]
+[ext_resource type="Texture2D" uid="uid://dnybdeml2jf5e" path="res://assets/cat_animations/sitting/sitting-transition-to-pet0007.png" id="69_37xlc"]
 [ext_resource type="Texture2D" uid="uid://do14o4bfh35rc" path="res://assets/cat_animations/azy_message/heart0001.png" id="69_ndrjj"]
+[ext_resource type="Texture2D" uid="uid://kh58bdicmu3l" path="res://assets/cat_animations/sitting/sitting-transition-to-pet0008.png" id="70_83607"]
 [ext_resource type="Texture2D" uid="uid://cnswp4cxtvwnh" path="res://assets/cat_animations/azy_message/heart0002.png" id="70_ih3m7"]
 [ext_resource type="Texture2D" uid="uid://xriauynk6vbm" path="res://assets/cat_animations/azy_message/heart0003.png" id="71_11yus"]
+[ext_resource type="Texture2D" uid="uid://cxomds76fn65s" path="res://assets/cat_animations/sitting/sitting-transition-to-pet0009.png" id="71_vny5k"]
+[ext_resource type="Texture2D" uid="uid://bpjsodgxcogqg" path="res://assets/cat_animations/sitting/sitting-transition-to-pet0010.png" id="72_8lcmr"]
 [ext_resource type="Texture2D" uid="uid://20suw1stppvd" path="res://assets/cat_animations/azy_message/heart0004.png" id="72_b6ruc"]
 [ext_resource type="Texture2D" uid="uid://cnas65ghfyxje" path="res://assets/cat_animations/azy_message/heart0005.png" id="73_155or"]
 [ext_resource type="Texture2D" uid="uid://bb61pgwv1ycph" path="res://assets/cat_animations/azy_message/heart0006.png" id="74_vtx2l"]
@@ -97,7 +114,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"grabbing",
-"speed": 1.2
+"speed": 0.7
 }, {
 "frames": [{
 "duration": 1.0,
@@ -108,7 +125,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idling",
-"speed": 1.2
+"speed": 1.7
 }, {
 "frames": [{
 "duration": 1.0,
@@ -199,7 +216,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"intro_greetings2",
-"speed": 1.2
+"speed": 1.7
 }, {
 "frames": [{
 "duration": 1.0,
@@ -292,6 +309,77 @@ animations = [{
 "loop": true,
 "name": &"petting_tickling",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 2.4,
+"texture": ExtResource("56_vrx01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_1uevf")
+}],
+"loop": true,
+"name": &"sitting_default",
+"speed": 1.7
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("58_tc087")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_73205")
+}],
+"loop": true,
+"name": &"sitting_petting_A",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("60_0tljd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_mgpkq")
+}],
+"loop": true,
+"name": &"sitting_petting_B",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("62_xmrkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_wvlrk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_engxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_raiwf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_roort")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_gm02q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_07pt3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_37xlc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_83607")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_vny5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_8lcmr")
+}],
+"loop": true,
+"name": &"sitting_transition",
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -406,6 +494,8 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ndrjj"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vrx01"]
+
 [node name="MainLevel" type="Node2D"]
 
 [node name="map" type="StaticBody2D" parent="."]
@@ -441,7 +531,7 @@ script = ExtResource("1_2wyq8")
 [node name="animationSprite" type="AnimatedSprite2D" parent="Hamzter"]
 scale = Vector2(0.846637, 0.846637)
 sprite_frames = SubResource("SpriteFrames_bu4jf")
-animation = &"intro_greetings2"
+animation = &"sitting_default"
 autoplay = "intro_greetings1"
 
 [node name="coll_area_greetings" type="Area2D" parent="Hamzter"]
@@ -506,6 +596,11 @@ scale = Vector2(38.7539, 30.0792)
 shape = SubResource("CircleShape2D_ndrjj")
 
 [node name="ResourcePreloader" type="ResourcePreloader" parent="Hamzter"]
+
+[node name="collision_sitting" type="CollisionShape2D" parent="Hamzter"]
+position = Vector2(-41.0256, 246.154)
+scale = Vector2(32.4512, -21.818)
+shape = SubResource("CircleShape2D_vrx01")
 
 [node name="messagebox" type="Container" parent="."]
 offset_right = 40.0

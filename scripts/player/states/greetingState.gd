@@ -12,6 +12,7 @@ func enter():
 	player.collision_petting.disabled = true
 	player.collision_grabbing.disabled = true
 	player.collision_default_grabbing.disabled = true
+	player.collision_sitting.disabled = true
 	
 	player.azy_animation_sprite.hide()
 	player.animation_sprite.play("intro_greetings1")

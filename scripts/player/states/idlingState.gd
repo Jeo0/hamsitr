@@ -101,12 +101,14 @@ func on_collision_area_input_event(viewport: Node, event, shape_idx: int) -> voi
 		player._change_state(load("res://scripts/player/states/rollingState.gd").new())
 	"""
 	#print("-------collision area input in idle ")
+	# left click: petting state
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		player.cursor_changed = true 
 		#print("\n=======\nCat1 clicked, changing state to pethold \n=======");
 		
 		player._change_state(load("res://scripts/player/states/petHoldState.gd").new())
 
+	# right click: grab state
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
 		player.cursor_changed = true 
 		#print("\n=======\ngraabiingg dis fkr\n=======");

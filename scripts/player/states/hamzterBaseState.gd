@@ -10,6 +10,7 @@ func exit(): pass
 func update(delta): pass
 func physics_update(delta): pass
 func handle_input(event): pass
+func polling_input(event): pass
 func on_animation_finished(): pass
 func on_animation_frame_changed(): pass
 func on_state_timer_timeout(): pass
