@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "I:\\devdev\\godoot\\hamsitr\\hamsitr.csproj": {}
+    "H:\\devdev\\godoot\\hamsitr\\hamsitr.csproj": {}
   },
   "projects": {
-    "I:\\devdev\\godoot\\hamsitr\\hamsitr.csproj": {
+    "H:\\devdev\\godoot\\hamsitr\\hamsitr.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "I:\\devdev\\godoot\\hamsitr\\hamsitr.csproj",
+        "projectUniqueName": "H:\\devdev\\godoot\\hamsitr\\hamsitr.csproj",
         "projectName": "hamsitr",
-        "projectPath": "I:\\devdev\\godoot\\hamsitr\\hamsitr.csproj",
-        "packagesPath": "C:\\Users\\Jessi\\.nuget\\packages\\",
-        "outputPath": "I:\\devdev\\godoot\\hamsitr\\.godot\\mono\\temp\\obj\\",
+        "projectPath": "H:\\devdev\\godoot\\hamsitr\\hamsitr.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "H:\\devdev\\godoot\\hamsitr\\.godot\\mono\\temp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Jessi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -58,10 +57,6 @@
             "GodotSharp": {
               "target": "Package",
               "version": "[4.4.1, )"
-            },
-            "GodotSharpEditor": {
-              "target": "Package",
-              "version": "[4.4.1, )"
             }
           },
           "imports": [
@@ -81,11 +76,23 @@
               "version": "[8.0.18, 8.0.18]"
             },
             {
+              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
+              "version": "[8.0.18, 8.0.18]"
+            },
+            {
               "name": "Microsoft.NETCore.App.Ref",
               "version": "[8.0.18, 8.0.18]"
             },
             {
+              "name": "Microsoft.NETCore.App.Runtime.win-x64",
+              "version": "[8.0.18, 8.0.18]"
+            },
+            {
               "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.18, 8.0.18]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
               "version": "[8.0.18, 8.0.18]"
             }
           ],
@@ -94,7 +101,12 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
         }
       }
     }

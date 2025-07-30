@@ -22,6 +22,11 @@ func handle_input(event) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
 		player._change_state(load("res://scripts/player/states/grabbingState.gd").new())
 		
+	
+	""" CONTEXT: handle the sitting """
+	if Input.is_action_just_pressed("spice"):
+		player._change_state(load("res://scripts/player/states/sittingState.gd").new())
+		
 
 func update(delta) -> void:
 	# if player is not near the dest, set velocity towards that direction
@@ -67,9 +72,11 @@ var e_is_walking: bool = false
 const e_walking_speed: float = 100
 
 func _determine_where_to_go_next() -> void:
+	# follow the initial location
 	var m_place_to_go_next: Vector2 = Vector2(randf_range(0 + e_collision_offset,
 			player.get_viewport_rect().size.x - e_collision_offset),
 			randf_range(0+e_collision_offset, player.get_viewport().size.y - e_collision_offset) )
+	#var m_place_to_go_next: Vector2 = player.get_global_mouse_position() 	# follow the cursor
 	"""
 	var m_place_to_go_next: Vector2 = Vector2(randf_range(0, player.get_viewport_rect().size.x),
 											randf_range(0, player.get_viewport().size.y) )

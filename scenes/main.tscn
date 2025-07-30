@@ -315,7 +315,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 2.2,
+"duration": 1.7,
 "texture": ExtResource("56_vrx01")
 }, {
 "duration": 1.0,
@@ -557,7 +557,7 @@ script = ExtResource("1_2wyq8")
 [node name="animationSprite" type="AnimatedSprite2D" parent="Hamzter"]
 scale = Vector2(0.846637, 0.846637)
 sprite_frames = SubResource("SpriteFrames_bu4jf")
-animation = &"sitting_default"
+animation = &"sitting_petting_A"
 
 [node name="coll_area_greetings" type="Area2D" parent="Hamzter"]
 
@@ -604,7 +604,7 @@ shape = SubResource("CircleShape2D_r4e17")
 [node name="azy_animationSprite" type="AnimatedSprite2D" parent="Hamzter"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_6nfnn")
-animation = &"congratulatory"
+animation = &"stupid"
 
 [node name="coll_area_grabbing" type="Area2D" parent="Hamzter"]
 visible = false

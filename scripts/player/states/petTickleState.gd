@@ -126,6 +126,10 @@ func handle_input(event) -> void:
 	if Input.is_action_just_released("click"):
 		player._change_state(load("res://scripts/player/states/petNoHoldAwaitPetState.gd").new())
 	
+	""" CONTEXT: handle the sitting """
+	if Input.is_action_just_pressed("spice"):
+		player._change_state(load("res://scripts/player/states/sittingState.gd").new())
+
 
 func on_local_timer_timeout() -> void:
 	# player._change_state(load("res://scripts/player/states/idlingState.gd").new())

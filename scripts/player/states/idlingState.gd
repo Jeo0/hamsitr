@@ -114,6 +114,11 @@ func on_collision_area_input_event(viewport: Node, event, shape_idx: int) -> voi
 		#print("\n=======\ngraabiingg dis fkr\n=======");
 		player._change_state(load("res://scripts/player/states/grabbingState.gd").new())
 		
+func handle_input(event) -> void:
+	""" CONTEXT: handle the sitting """
+	if Input.is_action_just_pressed("spice"):
+		player._change_state(load("res://scripts/player/states/sittingState.gd").new())
+		
 
 #func on_collision_area_input_event(viewport: Node, event: InputEventMouseButton, shape_idx: int) -> void:
 	#"""

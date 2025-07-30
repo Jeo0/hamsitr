@@ -1,0 +1,37 @@
+func exit() -> void : player.collision_sitting.disabled = true;
+#player.azy_animation_sprite.hide()
+#player.azy_animation_sprite.stop()
+
+func enter() -> void : player.collision_sitting.disabled = false;
+player.animation_sprite.play("sitting_default")
+
+#player global variables
+#g_tickle_threshold = 1300.0
+#g_tickle_accumulation = 0.0
+
+    var e_current_state
+    : GOTO_STATES = GOTO_STATES.GOTO_DEFAULT const e_decay : float = 0.5;
+const e_max_tickle_accumulation : float = 19000;
+const e_min_iloveu_accumulation : float = 79222;
+const e_max_iloveu_accumulation : float = 500000;
+# 500k var e_go_factor : bool = false;
+
+var e_orig_scale : Vector2 =
+                       Vector2(0.195, 0.195)
+
+                           enum GOTO_STATES {
+                             GOTO_DEFAULT,
+                             GOTO_DECAY,
+                             GOTO_TRANSITION,
+                             GOTO_PET_SEMI,
+                             GOTO_PET_A,
+                             GOTO_PET_B,
+                           }
+
+                       func
+                       update(delta) -> void : ""
+                                               "
+                                               if click if accumulation
+
+                                               ""
+                                               "

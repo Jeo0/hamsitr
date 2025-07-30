@@ -45,7 +45,7 @@ var g_tickle_accumulation: float = 0.0
 
 
 func _ready():
-	await get_tree().create_timer(1.0).timeout
+	# await get_tree().create_timer(1.0).timeout
 
 	_change_state(preload("res://scripts/player/states/greetingState.gd").new())
 	
@@ -98,12 +98,6 @@ func _unhandled_input(event):
 			print("Right click on area")
 			Input.set_custom_mouse_cursor(cursor_right_click, Input.CURSOR_ARROW, cursor_dimension/2)
 			
-	""" CONTEXT: handle the sitting """
-	#if event is InputEventKey:
-		#if event.pressed and event.
-			#pass
-	if Input.is_action_just_pressed("spice"):
-		_change_state(load("res://scripts/player/states/sittingState.gd").new())
 		
 			
 
@@ -169,7 +163,7 @@ func _input(event: InputEvent) -> void:
 func _on_coll_area_mouse_exited() -> void:
 	pass 
 	if cursor_changed:
-		Input.set_custom_mouse_cursor(cursor_default, Input.CURSOR_ARROW, cursor_dimension/2)
+		# Input.set_custom_mouse_cursor(cursor_default, Input.CURSOR_ARROW, cursor_dimension/2)
 		cursor_changed = false
 	if current_state:
 		current_state.on_coll_area_mouse_exited()

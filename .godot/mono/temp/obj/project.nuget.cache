@@ -1,15 +1,49 @@
 {
   "version": 2,
-  "dgSpecHash": "Q38W6Co7JXE=",
-  "success": true,
-  "projectFilePath": "I:\\devdev\\godoot\\hamsitr\\hamsitr.csproj",
+  "dgSpecHash": "T/ELlJxXu8E=",
+  "success": false,
+  "projectFilePath": "H:\\devdev\\godoot\\hamsitr\\hamsitr.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Jessi\\.nuget\\packages\\godot.sourcegenerators\\4.4.1\\godot.sourcegenerators.4.4.1.nupkg.sha512",
-    "C:\\Users\\Jessi\\.nuget\\packages\\godotsharp\\4.4.1\\godotsharp.4.4.1.nupkg.sha512",
-    "C:\\Users\\Jessi\\.nuget\\packages\\godotsharpeditor\\4.4.1\\godotsharpeditor.4.4.1.nupkg.sha512",
-    "C:\\Users\\Jessi\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.18\\microsoft.netcore.app.ref.8.0.18.nupkg.sha512",
-    "C:\\Users\\Jessi\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.18\\microsoft.windowsdesktop.app.ref.8.0.18.nupkg.sha512",
-    "C:\\Users\\Jessi\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.18\\microsoft.aspnetcore.app.ref.8.0.18.nupkg.sha512"
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.18\\microsoft.netcore.app.ref.8.0.18.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.18\\microsoft.windowsdesktop.app.ref.8.0.18.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.18\\microsoft.aspnetcore.app.ref.8.0.18.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Unable to load the service index for source https://api.nuget.org/v3/index.json.\r\n  No such host is known. (api.nuget.org:443)\r\n  No such host is known.",
+      "projectPath": "H:\\devdev\\godoot\\hamsitr\\hamsitr.csproj",
+      "filePath": "H:\\devdev\\godoot\\hamsitr\\hamsitr.csproj",
+      "libraryId": "Microsoft.NETCore.App.Runtime.win-x64",
+      "targetGraphs": []
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Unable to load the service index for source https://api.nuget.org/v3/index.json.\r\n  No such host is known. (api.nuget.org:443)\r\n  No such host is known.",
+      "projectPath": "H:\\devdev\\godoot\\hamsitr\\hamsitr.csproj",
+      "filePath": "H:\\devdev\\godoot\\hamsitr\\hamsitr.csproj",
+      "libraryId": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
+      "targetGraphs": []
+    },
+    {
+      "code": "NU1301",
+      "level": "Error",
+      "message": "Unable to load the service index for source https://api.nuget.org/v3/index.json.\r\n  No such host is known. (api.nuget.org:443)\r\n  No such host is known.",
+      "projectPath": "H:\\devdev\\godoot\\hamsitr\\hamsitr.csproj",
+      "filePath": "H:\\devdev\\godoot\\hamsitr\\hamsitr.csproj",
+      "libraryId": "Microsoft.AspNetCore.App.Runtime.win-x64",
+      "targetGraphs": []
+    },
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json.",
+      "projectPath": "H:\\devdev\\godoot\\hamsitr\\hamsitr.csproj",
+      "warningLevel": 1,
+      "filePath": "H:\\devdev\\godoot\\hamsitr\\hamsitr.csproj",
+      "targetGraphs": []
+    }
+  ]
 }

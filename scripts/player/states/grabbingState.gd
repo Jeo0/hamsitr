@@ -72,6 +72,11 @@ func handle_input(event) -> void:
 			grab_offset = player.position - player.get_global_mouse_position()
 		else:
 			e_rclick_is_pressed = false
+			
+	""" CONTEXT: handle the sitting """
+	if Input.is_action_just_pressed("spice"):
+		player._change_state(load("res://scripts/player/states/sittingState.gd").new())
+		
 	"""
 	if Input.is_action_just_pressed("rclick"):
 		e_rclick_is_pressed = true

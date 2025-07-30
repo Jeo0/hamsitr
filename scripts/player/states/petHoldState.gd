@@ -119,6 +119,11 @@ func handle_input(event):
 		player.cursor_changed = true 
 		print("\n=======\ngraabiingg dis fkr\n=======");
 		player._change_state(load("res://scripts/player/states/grabbingState.gd").new())
+		
+		
+	""" CONTEXT: handle the sitting """
+	if Input.is_action_just_pressed("spice"):
+		player._change_state(load("res://scripts/player/states/sittingState.gd").new())
 
 	
 """
