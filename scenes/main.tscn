@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://cahetioi8rorg"]
+[gd_scene load_steps=114 format=3 uid="uid://cahetioi8rorg"]
 
 [ext_resource type="Script" uid="uid://bwb5vy5qwblwx" path="res://scripts/player/hamzter.gd" id="1_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://b5ijccnyphfkj" path="res://assets/cat_animations/intro_greetings/intro_greetings0000.png" id="2_vxglm"]
@@ -101,6 +101,8 @@
 [ext_resource type="Texture2D" uid="uid://cykpnw640381c" path="res://assets/cat_animations/azy_message/stupid0002.png" id="78_r4ag1"]
 [ext_resource type="Texture2D" uid="uid://c62bln14yy6ov" path="res://assets/cat_animations/azy_message/stupid0003.png" id="79_v0wtd"]
 [ext_resource type="Texture2D" uid="uid://b35rii2060p5p" path="res://assets/cat_animations/azy_message/stupid0004.png" id="80_sgvw8"]
+[ext_resource type="Texture2D" uid="uid://c0126sduug767" path="res://assets/cat_animations/azy_message/congratulatoryasdfasdfasdfasdf0000.png" id="89_0tljd"]
+[ext_resource type="Texture2D" uid="uid://cy1nf7jg5b5f7" path="res://assets/cat_animations/azy_message/congratulatoryasdfasdfasdfasdf0001.png" id="90_mgpkq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxglm"]
 size = Vector2(623.57, 191.577)
@@ -457,6 +459,17 @@ size = Vector2(483.92, 380.517)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("89_0tljd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_mgpkq")
+}],
+"loop": true,
+"name": &"congratulatory",
+"speed": 2.3
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("68_xaipn")
 }, {
 "duration": 1.0,
@@ -591,7 +604,7 @@ shape = SubResource("CircleShape2D_r4e17")
 [node name="azy_animationSprite" type="AnimatedSprite2D" parent="Hamzter"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_6nfnn")
-animation = &"heart"
+animation = &"congratulatory"
 
 [node name="coll_area_grabbing" type="Area2D" parent="Hamzter"]
 visible = false
