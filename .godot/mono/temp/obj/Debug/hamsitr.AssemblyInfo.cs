@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("hamsitr")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2997a08834dac753c877f3f88579f87d3cc4d38")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a588573df402fc7ce87b0777c00aea06f2f58227")]
 [assembly: System.Reflection.AssemblyProductAttribute("hamsitr")]
 [assembly: System.Reflection.AssemblyTitleAttribute("hamsitr")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

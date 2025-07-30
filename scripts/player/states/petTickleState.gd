@@ -6,6 +6,7 @@ func exit() -> void:
 	player.collision_petting.disabled = true;
 	player.azy_animation_sprite.hide()
 	player.azy_animation_sprite.stop()
+	player.g_tickle_accumulation = 0
 
 func enter() -> void:
 	player.coll_area_petting.monitoring = true

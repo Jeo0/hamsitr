@@ -109,7 +109,32 @@ func _on_animation_sprite_frame_changed():
 	if current_state:
 		current_state.on_animation_frame_changed()
 
-func _change_state(new_state: PlayerState):
+func _change_state(new_state: PlayerState) -> void:
+	if current_state:
+		# Tell the state to clean up its stuff
+		current_state.exit()
+
+		# Disable any processing on the old state
+		current_state.set_process(false)
+		current_state.set_physics_process(false)
+		current_state.set_process_input(false)
+		current_state.set_process_unhandled_input(false)
+
+		# Disconnect signals if you connected any (example):
+		# current_state.animation_finished.disconnect(_on_state_anim_finished)
+
+		# Remove and free the old state so its coroutines can’t resume into it
+		if current_state.get_parent():
+			current_state.get_parent().remove_child(current_state)
+		current_state.queue_free()
+		current_state = null
+
+	# Install the new state
+	current_state = new_state
+	current_state.player = self
+	add_child(current_state)  # optional but convenient
+	current_state.enter()
+	"""
 	if current_state:
 		current_state.exit()
 	
@@ -117,6 +142,7 @@ func _change_state(new_state: PlayerState):
 	current_state.player = self
 	add_child(current_state)  # Optional, only if you want states to access scene tree
 	current_state.enter()
+	"""
 
 
 func _on_state_timer_timeout() -> void:

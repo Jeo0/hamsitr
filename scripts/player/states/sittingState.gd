@@ -4,6 +4,8 @@ func exit() -> void:
 	player.collision_sitting.disabled = true;
 	player.azy_animation_sprite.position = Vector2.ZERO
 	player.azy_animation_sprite.scale = Vector2(1,1)
+	
+	player.g_tickle_accumulation = 0
 	player.azy_animation_sprite.hide()
 	player.azy_animation_sprite.stop()
 
@@ -23,10 +25,12 @@ func enter() -> void:
 # g_tickle_accumulation = 0.0
 
 var e_current_state: GOTO_STATES = GOTO_STATES.GOTO_DEFAULT
-const e_decay : float = 0.97;
-const e_max_pet_semi_accumulation : float = 12000;
-const e_min_iloveu_accumulation : float = 40222;
-const e_max_iloveu_accumulation : float = 500100; # 500k 
+const m_debug_factor: float = 0.7
+const e_decay : float = 14000 * m_debug_factor;
+const e_max_pet_semi_accumulation : float = 1300 * m_debug_factor;
+const e_min_pet_semi_accumu: float = 3000 * m_debug_factor;
+const e_min_iloveu_accumulation : float = 5000 * m_debug_factor;
+const e_max_iloveu_accumulation : float = 9000 * m_debug_factor; # 220k
 
 # azy animation
 const e_min_azy_time: float = 10
@@ -71,11 +75,21 @@ func on_animation_finished() -> void:
 		#e_current_state = GOTO_STATES.GOTO_PET_SEMI
 	
 	# decay to default
-	if e_current_state == GOTO_STATES.GOTO_DECAY:
-		e_current_state = GOTO_STATES.GOTO_DEFAULT
+	#if e_current_state == GOTO_STATES.GOTO_DECAY:
+		#e_current_state = GOTO_STATES.GOTO_DEFAULT
 		
 
-func handle_input(event) -> void:
+func handle_input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		#if event.pressed:
+			#e_left_click_pressed = true
+		#else:
+			#var t := get_tree().create_timer(1.0)
+			#await t.timeout
+			## Guard: state might have been changed/freed during the await
+			#if !is_instance_valid(self) or player.current_state != self:
+				#return
+			#e_left_click_pressed = false
 	# change 
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
 		print("\n=======\ngraabiingg dis fkr\n=======");
@@ -86,12 +100,14 @@ func handle_input(event) -> void:
 		if event.pressed:
 			e_left_click_pressed = true
 		elif !event.pressed:
-			await get_tree().create_timer(1.0).timeout
+			await get_tree().create_timer(0.5).timeout
 			e_left_click_pressed = false
-			
 
 
 func update(delta: float) -> void: 
+	# guard
+	#if player.current_state != self:
+		#return
 	##########################################################################
 	######################## HANDLING AZY MSG ################################
 	##########################################################################
@@ -125,11 +141,11 @@ func update(delta: float) -> void:
 	##########################################################################
 	
 	if e_left_click_pressed == true:
-		if player.g_tickle_accumulation > e_min_iloveu_accumulation:     # 79222
+		if player.g_tickle_accumulation > e_min_iloveu_accumulation:     # 5000
 			e_current_state = _pet_a_or_b()
 			e_decided_pet_state_a_or_b = true
 
-		elif player.g_tickle_accumulation > e_max_pet_semi_accumulation:     # 19000
+		elif player.g_tickle_accumulation > e_min_pet_semi_accumu:     # 3000
 			e_current_state = GOTO_STATES.GOTO_PET_SEMI
 			
 		elif player.g_tickle_accumulation > player.g_tickle_threshold:     # 1300
@@ -139,7 +155,7 @@ func update(delta: float) -> void:
 			e_current_state = GOTO_STATES.GOTO_DEFAULT
 
 		# always accumulate the mouse movemetn
-		player.g_tickle_accumulation += Input.get_last_mouse_velocity().length() * 0.3
+		player.g_tickle_accumulation += Input.get_last_mouse_velocity().length() * delta
 
 		# clamp it to 500k
 		if player.g_tickle_accumulation >= e_max_iloveu_accumulation:   # 500k
@@ -161,8 +177,9 @@ func update(delta: float) -> void:
 		else:
 			e_current_state = GOTO_STATES.GOTO_DEFAULT
 			
-		# always decay whenever no click is happening
-		player.g_tickle_accumulation *= e_decay
+		# decay whenever no click is happening
+		if player.g_tickle_accumulation > delta:
+			player.g_tickle_accumulation -= e_decay * delta
 
 	####################################################################
 	

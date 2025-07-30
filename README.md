@@ -11,9 +11,9 @@
 
 <br><br><br>
 ## Controls
-> left click and rub: **go pet dat shit violently** <br>
-> right click and grab: **grab dat shit** <br>
-> space: **stay** like a good boy <br>
+- **left click and rub:** go **pet** dat shit *violently*
+- **right click and grab:** **grab** dat shit
+- **space:** **stay** like a good boy
 
 <br><br><br>
 ## Showcase
