@@ -1,3 +1,60 @@
+// ApiManager.cs
+using Godot;
+using System;
+using System.Runtime.InteropServices;
+
+public partial class ApiManager : Node
+{
+	// WinAPI (64-bit safe)
+	private const int GWL_EXSTYLE = -20;
+	private const uint WS_EX_LAYERED = 0x00080000;
+	private const uint WS_EX_TRANSPARENT = 0x00000020;
+
+	[DllImport("user32.dll")]
+	private static extern IntPtr GetActiveWindow();
+
+	[DllImport("user32.dll", EntryPoint = "GetWindowLongPtrW")]
+	private static extern IntPtr GetWindowLongPtr(IntPtr hWnd, int nIndex);
+
+	[DllImport("user32.dll", EntryPoint = "SetWindowLongPtrW")]
+	private static extern IntPtr SetWindowLongPtr(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
+
+	private IntPtr _hWnd;
+
+	public override void _Ready()
+	{
+		// Use the current active window (your original approach).
+		// This works well if the game window has focus when you start/toggle.
+		_hWnd = GetActiveWindow();
+		EnsureLayered();
+	}
+
+	private void EnsureLayered()
+	{
+		ulong style = (ulong)GetWindowLongPtr(_hWnd, GWL_EXSTYLE);
+		if ((style & WS_EX_LAYERED) == 0)
+		{
+			style |= WS_EX_LAYERED;
+			SetWindowLongPtr(_hWnd, GWL_EXSTYLE, (IntPtr)style);
+		}
+	}
+
+	public void SetClickThrough(bool clickthrough)
+	{
+		ulong style = (ulong)GetWindowLongPtr(_hWnd, GWL_EXSTYLE);
+		style |= WS_EX_LAYERED; // keep layered set at all times
+
+		if (clickthrough)
+			style |= WS_EX_TRANSPARENT;
+		else
+			style &= ~WS_EX_TRANSPARENT;
+
+		SetWindowLongPtr(_hWnd, GWL_EXSTYLE, (IntPtr)style);
+	}
+}
+
+
+/* // previous 
 using Godot;
 
 // Remember to include System and System.Runtime.InteropServices
@@ -53,6 +110,7 @@ public partial class ApiManager : Node
 	}
 	
 	
+  */
 	
 	/* What is a layered window? 
 	 * In the Windows API, a layered window is a special type of window that offers several
@@ -69,4 +127,4 @@ public partial class ApiManager : Node
 	 * that can occur with standard windows due to region updates. This is because the system automatically manages
 	 * the composition of layered windows with underlying elements.
 	 */
-}
+/* } */

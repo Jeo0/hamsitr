@@ -1,3 +1,34 @@
+
+// WindowManager.cs
+using Godot;
+using System;
+
+public partial class WindowManager : Node
+{
+    public override void _Ready()
+    {
+        GetViewport().TransparentBg = true;
+        DisplayServer.WindowSetMode(DisplayServer.WindowMode.Maximized);
+        DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, true);
+        DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.ResizeDisabled, true);
+
+        GetViewport().SizeChanged += ViewportSizeRefresh;
+    }
+
+    private void ViewportSizeRefresh()
+    {
+        CallDeferred(nameof(RefreshBorderless));
+    }
+
+    private void RefreshBorderless()
+    {
+        DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, false);
+        DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, true);
+    }
+}
+
+
+/* // previous
 using Godot;
 using System;
 
@@ -36,3 +67,4 @@ public partial class WindowManager : Node
 		DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, true);
 	}
 }
+*/

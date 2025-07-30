@@ -1,3 +1,64 @@
+// MouseDetection.cs
+using Godot;
+using Godot.Collections;
+
+public partial class MouseDetection : Node
+{
+	// Put your interactive nodes on this layer; adjust in the editor or via code.
+	[Export] public uint ClickableCollisionMask = 1u << 0;
+	[Export] public float CheckIntervalSec = 0.05f; // 20 Hz
+
+	private ApiManager _api;
+	private bool _clickthrough = true;
+	private double _accum;
+
+	public override void _Ready()
+	{
+		_api = GetNode<ApiManager>("/root/ApiManager");
+		_api.SetClickThrough(true);
+	}
+
+	public override void _PhysicsProcess(double delta)
+	{
+		_accum += delta;
+		if (_accum < CheckIntervalSec)
+			return;
+		_accum = 0.0;
+
+		// Screen-space mouse pos in the main Canvas
+		Vector2 mouse = GetViewport().GetMousePosition();
+
+		var space = GetViewport().World2D.DirectSpaceState;
+		var pp = new PhysicsPointQueryParameters2D
+		{
+			Position = mouse,
+			CollisionMask = ClickableCollisionMask,
+			CollideWithAreas = true,
+			CollideWithBodies = true
+		};
+
+		// Ask for just one hit — we only care if *anything* is there.
+		Array<Dictionary> results = space.IntersectPoint(pp, 1);
+		bool clickable = results.Count > 0;
+
+		// Only toggle the OS window flag if state changes
+		if (clickable == _clickthrough) // remember: clickthrough = !clickable
+		{
+			_clickthrough = !clickable;
+			_api.SetClickThrough(_clickthrough);
+		}
+	}
+
+	public override void _Input(InputEvent e)
+	{
+		// Optional: on mouse motion, force a check next physics step for snappier feel
+		if (e is InputEventMouseMotion)
+			_accum = CheckIntervalSec;
+	}
+}
+
+/* // previous
+
 using Godot;
 
 public partial class MouseDetection : Node
@@ -66,3 +127,4 @@ public partial class MouseDetection : Node
 		}
 	}
 }
+*/
