@@ -10,5 +10,11 @@
 
 
 <br><br><br>
+## Controls
+> left click and rub: go pet dat shit
+> right click and grab: grab dat shit
+> space: stay like a good boy
+
+<br><br><br>
 ## Showcase
 <img width="229" height="139" alt="Screenshot_20230301_095442" src="https://github.com/user-attachments/assets/e7216856-291c-43e9-9e05-5f9d7facb581" />
