@@ -29,7 +29,8 @@ MouseDetection="*res://scripts/Clickthrough/MouseDetection.cs"
 
 [display]
 
-window/size/mode=2
+window/size/mode=4
+window/size/resizable=false
 window/size/borderless=true
 window/size/always_on_top=true
 window/size/transparent=true
