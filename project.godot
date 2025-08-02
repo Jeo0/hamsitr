@@ -13,6 +13,7 @@ config_version=5
 config/name="hamsitr"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
+run/max_fps=60
 boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/image="uid://bvdmo6ome57jt"
 config/icon="res://assets/cat_animations/intro_idle/intro_idle.png"
@@ -22,7 +23,6 @@ boot_splash/minimum_display_time=1010
 
 [autoload]
 
-InputManager="*res://scripts/Managers/InputManager.cs"
 WindowManager="*res://scripts/Managers/WindowManager.cs"
 ApiManager="*res://scripts/Clickthrough/ApiManager.cs"
 MouseDetection="*res://scripts/Clickthrough/MouseDetection.cs"
@@ -34,8 +34,6 @@ window/size/resizable=false
 window/size/borderless=true
 window/size/always_on_top=true
 window/size/transparent=true
-window/size/extend_to_title=true
-window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/per_pixel_transparency/allowed=true

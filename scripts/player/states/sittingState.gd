@@ -92,7 +92,8 @@ func handle_input(event: InputEvent) -> void:
 			#e_left_click_pressed = false
 	# change 
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
-		print("\n=======\ngraabiingg dis fkr\n=======");
+		if OS.is_debug_build():
+			print("\n=======\ngraabiingg dis fkr\n=======");
 		player._change_state(load("res://scripts/player/states/grabbingState.gd").new())
 	
 	# left click
@@ -211,7 +212,8 @@ func update(delta: float) -> void:
 			
 	############################################################################
 	
-	print("accum: " + str(player.g_tickle_accumulation).pad_decimals(3) 
+	if OS.is_debug_build():
+		print("accum: " + str(player.g_tickle_accumulation).pad_decimals(3) 
 			+ "\t\tcurrent accum: " + str(Input.get_last_mouse_velocity().length()).pad_decimals(3) 
 			+ "\t\ttimeleft tillazy: " + str(e_time_left_till_azy).pad_decimals(3)
 			+ "\t\tazy pos: " + str(player.azy_animation_sprite.position)
